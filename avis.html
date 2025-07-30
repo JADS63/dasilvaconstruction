@@ -180,10 +180,10 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+    <section class="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         <!-- Background Image -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+            <img src="assets/images/avis_client.jpg" 
                  alt="Clients satisfaits DA Silva Construction" 
                  class="w-full h-full object-cover">
             <div class="hero-gradient absolute inset-0"></div>
@@ -201,18 +201,9 @@
                 <span class="text-construction-400">Clients</span>
             </h1>
             
-            <p class="text-xl md:text-2xl mb-4 text-gray-200 font-light">
-                Leur satisfaction est notre priorité
-            </p>
-            
-            <p class="text-lg md:text-xl mb-8 text-gray-300 max-w-2xl mx-auto">
-                Découvrez les témoignages de nos clients qui nous font confiance depuis<br>
-                <span class="font-semibold text-construction-300">plus de 25 ans</span> pour leurs projets de maçonnerie.
-            </p>
-            
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="#avis" 
-                   class="bg-construction-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-construction-700 transform hover:scale-105 transition-all duration-300 shadow-2xl">
+                   class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-gray-900 transform hover:scale-105 transition-all duration-300">
                     <i class="fas fa-comments mr-2"></i>
                     Voir les Avis
                 </a>
@@ -462,31 +453,6 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-20 bg-gradient-to-br from-construction-600 to-construction-800 relative overflow-hidden">
-        <div class="absolute inset-0 bg-black/20"></div>
-        <div class="relative max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl md:text-5xl font-black text-white mb-6">
-                Rejoignez nos clients <span class="text-construction-200">satisfaits</span>
-            </h2>
-            <p class="text-xl text-construction-100 mb-8 max-w-2xl mx-auto">
-                Découvrez pourquoi 98% de nos clients nous recommandent et font appel à nous pour leurs nouveaux projets.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="contact.html" 
-                   class="bg-white text-construction-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-xl">
-                    <i class="fas fa-calculator mr-2"></i>
-                    Demander un Devis
-                </a>
-                <a href="prestations.html" 
-                   class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-construction-700 transform hover:scale-105 transition-all duration-300">
-                    <i class="fas fa-tools mr-2"></i>
-                    Nos Prestations
-                </a>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="bg-gray-900 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -494,8 +460,10 @@
                 <!-- Brand -->
                 <div class="lg:col-span-2">
                     <div class="flex items-center space-x-4 mb-6">
-                        <div class="w-12 h-12 bg-construction-600 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-hard-hat text-white text-xl"></i>
+                        <div class="w-30 h-12 bg-white rounded-xl flex items-center justify-center p-1 shadow-sm">
+                            <img src="assets/images/logo_da_silva_construction.jpeg" 
+                                alt="Logo DA SILVA CONSTRUCTION" 
+                                class="w-full h-full object-contain filter brightness-110 contrast-110">
                         </div>
                         <div>
                             <h3 class="text-xl font-bold">DA SILVA CONSTRUCTION</h3>
@@ -503,30 +471,30 @@
                         </div>
                     </div>
                     <p class="text-gray-300 mb-6 max-w-md">
-                        98% de clients satisfaits depuis 1998. Une entreprise familiale qui place 
-                        la qualité et la satisfaction client au cœur de ses priorités.
+                        Entreprise familiale de maçonnerie générale depuis 1998. 
+                        Savoir-faire traditionnel et techniques modernes au service de vos projets.
                     </p>
-                    <div class="flex space-x-4">
+                    <!-- <div class="flex space-x-4">
                         <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-construction-600 transition-colors">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                         <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-construction-600 transition-colors">
-                            <i class="fab fa-google"></i>
+                            <i class="fab fa-instagram"></i>
                         </a>
                         <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-construction-600 transition-colors">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                    </div>
+                    </div> -->
                 </div>
                 
-                <!-- Satisfaction -->
+                <!-- Navigation -->
                 <div>
-                    <h4 class="text-lg font-semibold mb-6">Notre Satisfaction</h4>
+                    <h4 class="text-lg font-semibold mb-6">Navigation</h4>
                     <ul class="space-y-3">
-                        <li class="text-gray-300">98% de satisfaction client</li>
-                        <li class="text-gray-300">Note Google : 4.8/5</li>
-                        <li class="text-gray-300">200+ projets réalisés</li>
-                        <li class="text-gray-300">40 ans d'expérience</li>
+                        <li><a href="index.html" class="text-gray-300 hover:text-construction-400 transition-colors">Accueil</a></li>
+                        <li><a href="prestations.html" class="text-gray-300 hover:text-construction-400 transition-colors">Prestations</a></li>
+                        <li><a href="apropos.html" class="text-gray-300 hover:text-construction-400 transition-colors">À Propos</a></li>
+                        <li><a href="avis.html" class="text-gray-300 hover:text-construction-400 transition-colors">Avis Clients</a></li>
                     </ul>
                 </div>
                 
@@ -540,11 +508,11 @@
                         </li>
                         <li class="flex items-center space-x-3">
                             <i class="fas fa-phone text-construction-400"></i>
-                            <a href="tel:0474XXXXXX" class="text-gray-300 hover:text-construction-400 transition-colors">04 74 XX XX XX</a>
+                            <a href="tel:0675484700" class="text-gray-300 hover:text-construction-400 transition-colors">06 75 48 47 00</a>
                         </li>
                         <li class="flex items-center space-x-3">
                             <i class="fas fa-envelope text-construction-400"></i>
-                            <a href="contact.html" class="text-gray-300 hover:text-construction-400 transition-colors">Devis gratuit</a>
+                            <a href="contact.html" class="text-gray-300 hover:text-construction-400 transition-colors">Formulaire de contact</a>
                         </li>
                         <li class="flex items-center space-x-3">
                             <i class="fas fa-clock text-construction-400"></i>
@@ -557,7 +525,7 @@
             <!-- Bottom Footer -->
             <div class="border-t border-gray-800 mt-12 pt-8 text-center">
                 <p class="text-gray-400">
-                    &copy; 2025 DA SILVA CONSTRUCTION - Tous droits réservés
+                    &copy; 2025 DA SILVA CONSTRUCTION - SAS - Tous droits réservés
                 </p>
             </div>
         </div>
