@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos - DA SILVA CONSTRUCTION | Histoire & Équipe</title>
+    <meta name="description" content="Découvrez l'histoire de DA SILVA CONSTRUCTION : entreprise familiale créée en 1998 par Antonio, reprise par Marco en 2022. 40 ans d'expertise en maçonnerie.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        'construction': {
+                            50: '#fefbf3',
+                            100: '#fdf4e1',
+                            200: '#fae6c3',
+                            300: '#f6d299',
+                            400: '#f0b86d',
+                            500: '#ea9d4a',
+                            600: '#dc8332',
+                            700: '#b7672a',
+                            800: '#945229',
+                            900: '#794425',
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'fade-in-down': 'fadeInDown 0.8s ease-out',
+                        'scale-in': 'scaleIn 0.6s ease-out',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out',
+                        'slide-in-right': 'slideInRight 0.8s ease-out',
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.125);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+        }
+        
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #dc8332, #b7672a);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-line::before {
+                left: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-sans" x-data="{ 
+    mobileMenuOpen: false, 
+    scrolled: false,
+    loaded: false
+}" x-init="
+    loaded = true;
+    window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 });
+">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" 
+            :class="scrolled ? 'glass-effect shadow-xl' : 'bg-white'">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex items-center justify-between h-20">
+                <!-- Brand -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-12 bg-white rounded-xl flex items-center justify-center p-1 shadow-sm">
+                        <img src="assets/images/logo_da_silva_construction.jpeg" 
+                            alt="Logo DA SILVA CONSTRUCTION" 
+                            class="w-full h-full object-contain filter brightness-110 contrast-110">
+                    </div>
+                    <div>
+                        <h1 class="text-x2 font-bold text-gray-900" :class="scrolled ? 'text-gray-900' : 'text-black'">DA SILVA CONSTRUCTION</h1>
+                        <p class="text-sm text-gray-600" :class="scrolled ? 'text-black-600' : 'text-black-200'">Maçonnerie Générale</p>
+                    </div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">Accueil</a>
+                    <a href="prestations.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">Prestations</a>
+                    <a href="apropos.html" class="font-medium text-construction-600">À Propos</a>
+                    <a href="fournisseurs.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">Partenaires</a>
+                    <a href="avis.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">Avis</a>
+                    <a href="contact.html" class="bg-construction-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-construction-700 transition-colors">
+                        Contact
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button @click="mobileMenuOpen = !mobileMenuOpen" 
+                        class="lg:hidden p-2 rounded-lg" 
+                        :class="scrolled ? 'text-gray-900' : 'text-white'">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </nav>
+            
+            <!-- Mobile Menu -->
+            <div x-show="mobileMenuOpen" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 transform -translate-y-2"
+                 x-transition:enter-end="opacity-100 transform translate-y-0"
+                 class="lg:hidden bg-white rounded-xl shadow-xl mt-2 p-4 space-y-4">
+                <a href="index.html" class="block font-medium text-gray-700 hover:text-construction-600">Accueil</a>
+                <a href="prestations.html" class="block font-medium text-gray-700 hover:text-construction-600">Prestations</a>
+                <a href="apropos.html" class="block font-medium text-construction-600">À Propos</a>
+                <a href="fournisseurs.html" class="block font-medium text-gray-700 hover:text-construction-600">Partenaires</a>
+                <a href="avis.html" class="block font-medium text-gray-700 hover:text-construction-600">Avis</a>
+                <a href="contact.html" class="block bg-construction-600 text-white text-center py-3 rounded-lg font-semibold">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+                 alt="Histoire DA Silva Construction" 
+                 class="w-full h-full object-cover">
+            <div class="hero-gradient absolute inset-0"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4"
+             x-show="loaded" 
+             x-transition:enter="transition ease-out duration-1000"
+             x-transition:enter-start="opacity-0 transform translate-y-10"
+             x-transition:enter-end="opacity-100 transform translate-y-0">
+            
+            <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+                Notre<br>
+                <span class="text-construction-400">Histoire</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl mb-4 text-gray-200 font-light">
+                Une entreprise familiale depuis 1998
+            </p>
+            
+            <p class="text-lg md:text-xl mb-8 text-gray-300 max-w-2xl mx-auto">
+                De père en fils, découvrez l'histoire de DA SILVA CONSTRUCTION,<br>
+                <span class="font-semibold text-construction-300">40 ans d'expertise</span> en maçonnerie générale.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#histoire" 
+                   class="bg-construction-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-construction-700 transform hover:scale-105 transition-all duration-300 shadow-2xl">
+                    <i class="fas fa-history mr-2"></i>
+                    Notre Histoire
+                </a>
+                <a href="#equipe" 
+                   class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-gray-900 transform hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-users mr-2"></i>
+                    Notre Équipe
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Présentation -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Une expertise <span class="text-construction-600">familiale</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                    DA SILVA CONSTRUCTION est une entreprise de maçonnerie générale, de père en fils, basée à proximité immédiate de Bourgoin-Jallieu. 
+                    Fort de ses <span class="font-bold text-construction-600">40 ans d'expérience</span>, nous exerçons dans le Nord Isère, le Grand Lyon et les départements limitrophes.
+                </p>
+            </div>
+            
+            <!-- Stats rapides -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+                <div class="text-center">
+                    <div class="bg-construction-50 rounded-2xl p-6 mb-4">
+                        <div class="text-3xl md:text-4xl font-black text-construction-600 mb-2">1998</div>
+                        <p class="text-gray-600 font-medium">Année de création</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="bg-construction-50 rounded-2xl p-6 mb-4">
+                        <div class="text-3xl md:text-4xl font-black text-construction-600 mb-2">2</div>
+                        <p class="text-gray-600 font-medium">Générations</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="bg-construction-50 rounded-2xl p-6 mb-4">
+                        <div class="text-3xl md:text-4xl font-black text-construction-600 mb-2">40+</div>
+                        <p class="text-gray-600 font-medium">Années d'expérience</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="bg-construction-50 rounded-2xl p-6 mb-4">
+                        <div class="text-3xl md:text-4xl font-black text-construction-600 mb-2">SAS</div>
+                        <p class="text-gray-600 font-medium">Depuis 2022</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Histoire -->
+    <section id="histoire" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Notre <span class="text-construction-600">Chronologie</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Découvrez les moments clés qui ont façonné notre entreprise familiale
+                </p>
+            </div>
+            
+            <div class="relative max-w-6xl mx-auto">
+                <!-- Timeline Line -->
+                <div class="timeline-line relative">
+                    
+                    <!-- 1998 -->
+                    <div class="relative flex items-center mb-20" x-intersect="$el.classList.add('animate-fade-in-up')">
+                        <div class="hidden md:block flex-1 text-right pr-8">
+                            <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">Création par Antonio</h3>
+                                <p class="text-gray-600 mb-4 leading-relaxed">
+                                    C'est en 1998 qu'<span class="font-semibold text-construction-600">Antonio, le patriarche</span>, crée l'entreprise familiale et propose ses services aux particuliers dans la construction de maisons individuelles, la rénovation en bâtiments, les aménagements extérieurs ainsi que tous types de maçonnerie.
+                                </p>
+                                <div class="bg-construction-50 rounded-xl p-4 border-l-4 border-construction-600">
+                                    <p class="text-sm font-semibold text-construction-800">
+                                        Vision fondatrice : Allier savoir-faire traditionnel et techniques modernes
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Year Badge -->
+                        <div class="absolute left-1/2 transform -translate-x-1/2 md:relative md:left-0 md:transform-none flex-shrink-0 z-10">
+                            <div class="w-20 h-20 bg-gradient-to-br from-construction-600 to-construction-700 rounded-full flex items-center justify-center shadow-xl">
+                                <span class="text-white font-black text-lg">1998</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Mobile Content -->
+                        <div class="md:hidden flex-1 pl-8 ml-12">
+                            <div class="bg-white rounded-2xl shadow-xl p-6">
+                                <h3 class="text-xl font-bold text-gray-900 mb-3">Création par Antonio</h3>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Antonio crée l'entreprise familiale et développe une expertise en maçonnerie générale.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="hidden md:block flex-1 pl-8"></div>
+                    </div>
+
+                    <!-- 2004 -->
+                    <div class="relative flex items-center mb-20" x-intersect="$el.classList.add('animate-fade-in-up')">
+                        <div class="hidden md:block flex-1 pr-8"></div>
+                        
+                        <!-- Year Badge -->
+                        <div class="absolute left-1/2 transform -translate-x-1/2 md:relative md:left-0 md:transform-none flex-shrink-0 z-10">
+                            <div class="w-20 h-20 bg-gradient-to-br from-construction-600 to-construction-700 rounded-full flex items-center justify-center shadow-xl">
+                                <span class="text-white font-black text-lg">2004</span>
+                            </div>
+                        </div>
+                        
+                        <div class="hidden md:block flex-1 text-left pl-8">
+                            <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">Transmission du Savoir-Faire</h3>
+                                <p class="text-gray-600 mb-4 leading-relaxed">
+                                    En 2004, Antonio intègre et forme son fils, <span class="font-semibold text-construction-600">Marco</span>, pour le seconder et lui transmettre son savoir-faire et son perfectionnisme. Doté d'un esprit créatif, Marco apporte une vision novatrice et contemporaine à la structure.
+                                </p>
+                                <div class="bg-construction-50 rounded-xl p-4 border-l-4 border-construction-600">
+                                    <p class="text-sm font-semibold text-construction-800">
+                                        Formation familiale : 6 années d'apprentissage et de transmission
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Mobile Content -->
+                        <div class="md:hidden flex-1 pl-8 ml-12">
+                            <div class="bg-white rounded-2xl shadow-xl p-6">
+                                <h3 class="text-xl font-bold text-gray-900 mb-3">Formation de Marco</h3>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Marco rejoint l'entreprise familiale et apporte sa vision moderne.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2022 -->
+                    <div class="relative flex items-center" x-intersect="$el.classList.add('animate-fade-in-up')">
+                        <div class="hidden md:block flex-1 text-right pr-8">
+                            <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">SAS DA SILVA CONSTRUCTION</h3>
+                                <p class="text-gray-600 mb-4 leading-relaxed">
+                                    En 2022, l'entreprise prend un nouveau virage et poursuit sa croissance en devenant la <span class="font-semibold text-construction-600">SAS DA SILVA CONSTRUCTION</span> gérée par Marco DA SILVA qui s'inspire des préceptes de son héritage familial.
+                                </p>
+                                <div class="bg-construction-50 rounded-xl p-4 border-l-4 border-construction-600">
+                                    <p class="text-sm font-semibold text-construction-800">
+                                        Nouveau développement : Extension de l'activité aux professionnels
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Year Badge -->
+                        <div class="absolute left-1/2 transform -translate-x-1/2 md:relative md:left-0 md:transform-none flex-shrink-0 z-10">
+                            <div class="w-20 h-20 bg-gradient-to-br from-construction-600 to-construction-700 rounded-full flex items-center justify-center shadow-xl">
+                                <span class="text-white font-black text-lg">2022</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Mobile Content -->
+                        <div class="md:hidden flex-1 pl-8 ml-12">
+                            <div class="bg-white rounded-2xl shadow-xl p-6">
+                                <h3 class="text-xl font-bold text-gray-900 mb-3">SAS DA SILVA</h3>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Transformation en SAS sous la direction de Marco DA SILVA.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="hidden md:block flex-1 pl-8"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Équipe -->
+    <section id="equipe" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Notre <span class="text-construction-600">Équipe</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Une famille unie par la passion de la maçonnerie et l'excellence du service
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Antonio -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="h-48 bg-gradient-to-br from-construction-400 to-construction-600 relative overflow-hidden flex items-center justify-center">
+                        <div class="w-24 h-24 bg-white/20 backdrop-blur rounded-full flex items-center justify-center">
+                            <span class="text-4xl font-black text-white">A</span>
+                        </div>
+                        <div class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur rounded-lg flex items-center justify-center">
+                            <i class="fas fa-crown text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Antonio DA SILVA</h3>
+                        <p class="text-construction-600 font-semibold mb-4">Fondateur & Patriarche</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Créateur de l'entreprise en 1998, Antonio a su transmettre sa passion et son expertise technique. Son perfectionnisme et sa rigueur sont devenus les piliers de l'entreprise familiale.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Marco -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="h-48 bg-gradient-to-br from-construction-400 to-construction-600 relative overflow-hidden flex items-center justify-center">
+                        <div class="w-24 h-24 bg-white/20 backdrop-blur rounded-full flex items-center justify-center">
+                            <span class="text-4xl font-black text-white">M</span>
+                        </div>
+                        <div class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur rounded-lg flex items-center justify-center">
+                            <i class="fas fa-rocket text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Marco DA SILVA</h3>
+                        <p class="text-construction-600 font-semibold mb-4">Gérant SAS</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Formé par son père depuis 2004, Marco allie tradition familiale et vision contemporaine. Il dirige aujourd'hui l'entreprise avec créativité et modernité tout en respectant l'héritage familial.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Équipe -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2 md:col-span-2 lg:col-span-1" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="h-48 bg-gradient-to-br from-construction-400 to-construction-600 relative overflow-hidden flex items-center justify-center">
+                        <div class="w-24 h-24 bg-white/20 backdrop-blur rounded-full flex items-center justify-center">
+                            <i class="fas fa-users text-4xl text-white"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur rounded-lg flex items-center justify-center">
+                            <i class="fas fa-tools text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Équipe Qualifiée</h3>
+                        <p class="text-construction-600 font-semibold mb-4">Maçons Expérimentés</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Une équipe de maçons qualifiés, régulièrement formée aux nouvelles techniques. Partenariat avec des fournisseurs de qualité pour une expertise toujours à la pointe.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valeurs -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Nos <span class="text-construction-600">Valeurs</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Les principes qui guident notre travail au quotidien depuis plus de 40 ans
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Expertise -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 p-8 text-center group hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-16 h-16 bg-construction-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-construction-200 transition-colors duration-300">
+                        <i class="fas fa-hard-hat text-2xl text-construction-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Expertise</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        40 ans d'expérience dans tous les domaines de la maçonnerie, de la construction neuve à la rénovation de patrimoine ancien.
+                    </p>
+                </div>
+
+                <!-- Famille -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 p-8 text-center group hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-16 h-16 bg-construction-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-construction-200 transition-colors duration-300">
+                        <i class="fas fa-home text-2xl text-construction-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Famille</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Entreprise familiale de père en fils, garantissant continuité, confiance et relation privilégiée avec nos clients.
+                    </p>
+                </div>
+
+                <!-- Qualité -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 p-8 text-center group hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-16 h-16 bg-construction-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-construction-200 transition-colors duration-300">
+                        <i class="fas fa-award text-2xl text-construction-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Qualité</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Respect du DTU et de l'environnement, utilisation de matériaux de qualité et techniques de pointe avec nos partenaires.
+                    </p>
+                </div>
+
+                <!-- Proximité -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 p-8 text-center group hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-16 h-16 bg-construction-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-construction-200 transition-colors duration-300">
+                        <i class="fas fa-map-marker-alt text-2xl text-construction-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Proximité</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Basés près de Bourgoin-Jallieu, nous privilégions les relations de proximité avec nos clients du Nord Isère et Grand Lyon.
+                    </p>
+                </div>
+
+                <!-- Réactivité -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 p-8 text-center group hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-16 h-16 bg-construction-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-construction-200 transition-colors duration-300">
+                        <i class="fas fa-bolt text-2xl text-construction-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Réactivité</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Analyse rapide de vos projets, devis gratuit et intervention dans les meilleurs délais pour tous vos travaux.
+                    </p>
+                </div>
+
+                <!-- Formation -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 p-8 text-center group hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-16 h-16 bg-construction-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-construction-200 transition-colors duration-300">
+                        <i class="fas fa-graduation-cap text-2xl text-construction-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Formation</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Nos équipes sont régulièrement formées aux nouvelles techniques et méthodes pour une prestation toujours optimale.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Garanties -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Nos <span class="text-construction-600">Garanties</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    La sécurité et la qualité de nos prestations, votre tranquillité d'esprit
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-construction-50 rounded-2xl p-6 text-center hover:bg-construction-100 transition-colors duration-300">
+                    <i class="fas fa-shield-alt text-3xl text-construction-600 mb-4"></i>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Assurance Décennale</h4>
+                    <p class="text-gray-600 text-sm">Protection sur 10 ans pour tous nos travaux de gros œuvre</p>
+                </div>
+                
+                <div class="bg-construction-50 rounded-2xl p-6 text-center hover:bg-construction-100 transition-colors duration-300">
+                    <i class="fas fa-handshake text-3xl text-construction-600 mb-4"></i>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Responsabilité Civile</h4>
+                    <p class="text-gray-600 text-sm">Sécurité totale de nos interventions et chantiers</p>
+                </div>
+                
+                <div class="bg-construction-50 rounded-2xl p-6 text-center hover:bg-construction-100 transition-colors duration-300">
+                    <i class="fas fa-check-circle text-3xl text-construction-600 mb-4"></i>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Parfait Achèvement</h4>
+                    <p class="text-gray-600 text-sm">Garantie sur les finitions et détails de réalisation</p>
+                </div>
+                
+                <div class="bg-construction-50 rounded-2xl p-6 text-center hover:bg-construction-100 transition-colors duration-300">
+                    <i class="fas fa-certificate text-3xl text-construction-600 mb-4"></i>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Conformité DTU</h4>
+                    <p class="text-gray-600 text-sm">Respect strict des normes techniques unifiées</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-construction-600 to-construction-800 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="relative max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl md:text-5xl font-black text-white mb-6">
+                Rejoignez notre <span class="text-construction-200">histoire</span>
+            </h2>
+            <p class="text-xl text-construction-100 mb-8 max-w-2xl mx-auto">
+                Découvrez comment notre expertise familiale et nos 40 ans d'expérience peuvent servir votre projet de construction ou rénovation.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html" 
+                   class="bg-white text-construction-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-xl">
+                    <i class="fas fa-envelope mr-2"></i>
+                    Nous Contacter
+                </a>
+                <a href="prestations.html" 
+                   class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-construction-700 transform hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-tools mr-2"></i>
+                    Nos Prestations
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-construction-600 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-hard-hat text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">DA SILVA CONSTRUCTION</h3>
+                            <p class="text-gray-400">Maçonnerie Générale</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Entreprise familiale de maçonnerie générale depuis 1998. 
+                        Savoir-faire traditionnel et techniques modernes au service de vos projets.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-construction-600 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-construction-600 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-construction-600 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Histoire -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Notre Histoire</h4>
+                    <ul class="space-y-3">
+                        <li class="text-gray-300">1998 : Création par Antonio</li>
+                        <li class="text-gray-300">2004 : Formation de Marco</li>
+                        <li class="text-gray-300">2022 : SAS DA SILVA</li>
+                        <li><a href="apropos.html" class="text-gray-300 hover:text-construction-400 transition-colors">En savoir plus</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Contact</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-map-marker-alt text-construction-400"></i>
+                            <span class="text-gray-300">Près de Bourgoin-Jallieu (38300)</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-construction-400"></i>
+                            <a href="tel:0474XXXXXX" class="text-gray-300 hover:text-construction-400 transition-colors">04 74 XX XX XX</a>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-construction-400"></i>
+                            <a href="contact.html" class="text-gray-300 hover:text-construction-400 transition-colors">Formulaire de contact</a>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-clock text-construction-400"></i>
+                            <span class="text-gray-300">Lun-Ven: 8h-18h</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom Footer -->
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">
+                    &copy; 2025 SAS DA SILVA CONSTRUCTION - Tous droits réservés
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

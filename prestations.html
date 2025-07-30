@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestations - DA SILVA CONSTRUCTION | Maçonnerie Bourgoin-Jallieu</title>
+    <meta name="description" content="Découvrez toutes nos prestations de maçonnerie : constructions neuves, rénovations, extensions, piscines, aménagements extérieurs. Devis gratuit.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        'construction': {
+                            50: '#fefbf3',
+                            100: '#fdf4e1',
+                            200: '#fae6c3',
+                            300: '#f6d299',
+                            400: '#f0b86d',
+                            500: '#ea9d4a',
+                            600: '#dc8332',
+                            700: '#b7672a',
+                            800: '#945229',
+                            900: '#794425',
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'fade-in-down': 'fadeInDown 0.8s ease-out',
+                        'scale-in': 'scaleIn 0.6s ease-out',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out',
+                        'slide-in-right': 'slideInRight 0.8s ease-out',
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.125);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+        }
+        
+        .section-divider {
+            background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+            height: 1px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-sans" x-data="{ 
+    mobileMenuOpen: false, 
+    scrolled: false,
+    loaded: false
+}" x-init="
+    loaded = true;
+    window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 });
+">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" 
+            :class="scrolled ? 'glass-effect shadow-xl' : 'bg-white'">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex items-center justify-between h-20">
+                <!-- Brand -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-12 bg-white rounded-xl flex items-center justify-center p-1 shadow-sm">
+                        <img src="assets/images/logo_da_silva_construction.jpeg" 
+                            alt="Logo DA SILVA CONSTRUCTION" 
+                            class="w-full h-full object-contain filter brightness-110 contrast-110">
+                    </div>
+                    <div>
+                        <h1 class="text-x2 font-bold text-gray-900" :class="scrolled ? 'text-gray-900' : 'text-black'">DA SILVA CONSTRUCTION</h1>
+                        <p class="text-sm text-gray-600" :class="scrolled ? 'text-black-600' : 'text-black-200'">Maçonnerie Générale</p>
+                    </div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">Accueil</a>
+                    <a href="prestations.html" class="font-medium text-construction-600">Prestations</a>
+                    <a href="apropos.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">À Propos</a>
+                    <a href="fournisseurs.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">Partenaires</a>
+                    <a href="avis.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">Avis</a>
+                    <a href="contact.html" class="bg-construction-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-construction-700 transition-colors">
+                        Contact
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button @click="mobileMenuOpen = !mobileMenuOpen" 
+                        class="lg:hidden p-2 rounded-lg" 
+                        :class="scrolled ? 'text-gray-900' : 'text-white'">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </nav>
+            
+            <!-- Mobile Menu -->
+            <div x-show="mobileMenuOpen" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 transform -translate-y-2"
+                 x-transition:enter-end="opacity-100 transform translate-y-0"
+                 class="lg:hidden bg-white rounded-xl shadow-xl mt-2 p-4 space-y-4">
+                <a href="index.html" class="block font-medium text-gray-700 hover:text-construction-600">Accueil</a>
+                <a href="prestations.html" class="block font-medium text-construction-600">Prestations</a>
+                <a href="apropos.html" class="block font-medium text-gray-700 hover:text-construction-600">À Propos</a>
+                <a href="fournisseurs.html" class="block font-medium text-gray-700 hover:text-construction-600">Partenaires</a>
+                <a href="avis.html" class="block font-medium text-gray-700 hover:text-construction-600">Avis</a>
+                <a href="contact.html" class="block bg-construction-600 text-white text-center py-3 rounded-lg font-semibold">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+                 alt="Prestations maçonnerie" 
+                 class="w-full h-full object-cover">
+            <div class="hero-gradient absolute inset-0"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4"
+             x-show="loaded" 
+             x-transition:enter="transition ease-out duration-1000"
+             x-transition:enter-start="opacity-0 transform translate-y-10"
+             x-transition:enter-end="opacity-100 transform translate-y-0">
+            
+            <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+                Nos<br>
+                <span class="text-construction-400">Prestations</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl mb-4 text-gray-200 font-light">
+                40 ans d'expertise en maçonnerie générale
+            </p>
+            
+            <p class="text-lg md:text-xl mb-8 text-gray-300 max-w-2xl mx-auto">
+                De la construction neuve à la rénovation de patrimoine ancien,<br>
+                découvrez l'étendue de notre <span class="font-semibold text-construction-300">savoir-faire</span>.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#constructions" 
+                   class="bg-construction-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-construction-700 transform hover:scale-105 transition-all duration-300 shadow-2xl">
+                    <i class="fas fa-building mr-2"></i>
+                    Constructions Neuves
+                </a>
+                <a href="#renovations" 
+                   class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-gray-900 transform hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-wrench mr-2"></i>
+                    Rénovations
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Constructions Neuves -->
+    <section id="constructions" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Constructions <span class="text-construction-600">Neuves</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    De la maison individuelle aux locaux professionnels, nous réalisons tous vos projets de construction 
+                    avec des matériaux de qualité et le respect des normes en vigueur.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Maisons Individuelles -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-construction-400 to-construction-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Construction maison individuelle" 
+                             class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center">
+                            <i class="fas fa-home text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Maisons Individuelles</h3>
+                        <p class="text-gray-600 mb-4">Construction complète de maisons individuelles avec expertise en maçonnerie traditionnelle et moderne.</p>
+                        <ul class="space-y-2 mb-4 text-sm">
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Gros œuvre complet
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Béton cellulaire et brique
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Isolation thermique
+                            </li>
+                        </ul>
+                        <a href="contact.html" 
+                           class="inline-flex items-center text-construction-600 font-semibold hover:text-construction-700 transition-colors">
+                            Devis gratuit <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Logements Collectifs -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-construction-400 to-construction-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Logements collectifs" 
+                             class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center">
+                            <i class="fas fa-building text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Logements Collectifs</h3>
+                        <p class="text-gray-600 mb-4">Construction de bâtiments collectifs avec techniques industrielles et partenariat professionnel.</p>
+                        <ul class="space-y-2 mb-4 text-sm">
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Béton armé et aggloméré
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Techniques industrielles
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Respect des délais
+                            </li>
+                        </ul>
+                        <a href="contact.html" 
+                           class="inline-flex items-center text-construction-600 font-semibold hover:text-construction-700 transition-colors">
+                            Devis gratuit <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Extensions -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-construction-400 to-construction-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Extensions" 
+                             class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center">
+                            <i class="fas fa-plus text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Extensions / Surélévations</h3>
+                        <p class="text-gray-600 mb-4">Agrandissement de votre habitat avec parfaite intégration architecturale.</p>
+                        <ul class="space-y-2 mb-4 text-sm">
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Étude de faisabilité
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Intégration architecturale
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Liaison avec l'existant
+                            </li>
+                        </ul>
+                        <a href="contact.html" 
+                           class="inline-flex items-center text-construction-600 font-semibold hover:text-construction-700 transition-colors">
+                            Devis gratuit <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Locaux Professionnels -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-construction-400 to-construction-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Locaux professionnels" 
+                             class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center">
+                            <i class="fas fa-industry text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Locaux Professionnels</h3>
+                        <p class="text-gray-600 mb-4">Bâtiments industriels, entrepôts, ateliers et bureaux adaptés à vos besoins.</p>
+                        <ul class="space-y-2 mb-4 text-sm">
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Bâtiments industriels
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Entrepôts et ateliers
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Normes professionnelles
+                            </li>
+                        </ul>
+                        <a href="contact.html" 
+                           class="inline-flex items-center text-construction-600 font-semibold hover:text-construction-700 transition-colors">
+                            Devis gratuit <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Piscines -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-construction-400 to-construction-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Piscines" 
+                             class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center">
+                            <i class="fas fa-swimming-pool text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Piscines Toutes Gammes</h3>
+                        <p class="text-gray-600 mb-4">Construction de piscines enterrées avec local technique intégré, toutes dimensions.</p>
+                        <ul class="space-y-2 mb-4 text-sm">
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Piscines enterrées
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Local technique intégré
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Toutes formes et dimensions
+                            </li>
+                        </ul>
+                        <a href="contact.html" 
+                           class="inline-flex items-center text-construction-600 font-semibold hover:text-construction-700 transition-colors">
+                            Devis gratuit <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Garages -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-construction-400 to-construction-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Garages" 
+                             class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center">
+                            <i class="fas fa-car text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Garages & Annexes</h3>
+                        <p class="text-gray-600 mb-4">Construction de garages, ateliers et bâtiments annexes pour compléter votre habitat.</p>
+                        <ul class="space-y-2 mb-4 text-sm">
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Garages individuels
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Ateliers et remises
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Bâtiments annexes
+                            </li>
+                        </ul>
+                        <a href="contact.html" 
+                           class="inline-flex items-center text-construction-600 font-semibold hover:text-construction-700 transition-colors">
+                            Devis gratuit <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rénovations -->
+    <section id="renovations" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    <span class="text-construction-600">Rénovations</span> & Restaurations
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Rénovation de bâtiments anciens et atypiques avec respect de l'esprit et des techniques initiales. 
+                    Expertise en matériaux traditionnels : pisé, pierre, chaux et mâchefer.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Bâtiments Anciens -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-construction-400 to-construction-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Rénovation bâtiments anciens" 
+                             class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center">
+                            <i class="fas fa-landmark text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Bâtiments Anciens</h3>
+                        <p class="text-gray-600 mb-4">Rénovation respectueuse du patrimoine avec techniques traditionnelles.</p>
+                        <ul class="space-y-2 mb-4 text-sm">
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Techniques traditionnelles
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Pisé et pierre naturelle
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Chaux et mâchefer
+                            </li>
+                        </ul>
+                        <a href="contact.html" 
+                           class="inline-flex items-center text-construction-600 font-semibold hover:text-construction-700 transition-colors">
+                            Devis gratuit <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Création d'Ouvertures -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-construction-400 to-construction-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Création ouvertures" 
+                             class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center">
+                            <i class="fas fa-door-open text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Création d'Ouvertures</h3>
+                        <p class="text-gray-600 mb-4">Percement de murs porteurs avec pose d'acier IPN/HEA, toutes dimensions.</p>
+                        <ul class="space-y-2 mb-4 text-sm">
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Murs porteurs et cloisons
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Pose IPN et HEA
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Calculs de charges
+                            </li>
+                        </ul>
+                        <a href="contact.html" 
+                           class="inline-flex items-center text-construction-600 font-semibold hover:text-construction-700 transition-colors">
+                            Devis gratuit <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Planchers BA -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-construction-400 to-construction-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1581092795442-6564f7e96ac7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Planchers béton armé" 
+                             class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center">
+                            <i class="fas fa-layer-group text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Planchers Béton Armé</h3>
+                        <p class="text-gray-600 mb-4">Planchers, jambages, linteaux et renforcement de structures existantes.</p>
+                        <ul class="space-y-2 mb-4 text-sm">
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Planchers béton armé
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Jambages et linteaux
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Ceinturage de bâtiment
+                            </li>
+                        </ul>
+                        <a href="contact.html" 
+                           class="inline-flex items-center text-construction-600 font-semibold hover:text-construction-700 transition-colors">
+                            Devis gratuit <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aménagements Extérieurs -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Aménagements <span class="text-construction-600">Extérieurs</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Terrasses, béton désactivé, entrées et clôtures, allées et cours pavées en granit. 
+                    Création d'espaces de vie extérieurs harmonieux et fonctionnels.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Terrasses -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2">
+                    <div class="h-40 bg-gradient-to-br from-construction-400 to-construction-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Terrasses" 
+                             class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur rounded-lg flex items-center justify-center">
+                            <i class="fas fa-home text-white text-sm"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Terrasses</h3>
+                        <p class="text-gray-600 text-sm mb-3">Béton désactivé, pavés, pierre naturelle</p>
+                        <a href="contact.html" class="text-construction-600 font-semibold hover:text-construction-700 transition-colors text-sm">
+                            En savoir plus →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Allées -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2">
+                    <div class="h-40 bg-gradient-to-br from-construction-400 to-construction-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1597149392153-19e2c94ae92e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Allées" 
+                             class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur rounded-lg flex items-center justify-center">
+                            <i class="fas fa-road text-white text-sm"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Allées Pavées</h3>
+                        <p class="text-gray-600 text-sm mb-3">Granit, pavés autobloquants, enrobé</p>
+                        <a href="contact.html" class="text-construction-600 font-semibold hover:text-construction-700 transition-colors text-sm">
+                            En savoir plus →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Murets -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2">
+                    <div class="h-40 bg-gradient-to-br from-construction-400 to-construction-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Murets" 
+                             class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur rounded-lg flex items-center justify-center">
+                            <i class="fas fa-border-style text-white text-sm"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Murets & Clôtures</h3>
+                        <p class="text-gray-600 text-sm mb-3">Pierre, béton, soutènement</p>
+                        <a href="contact.html" class="text-construction-600 font-semibold hover:text-construction-700 transition-colors text-sm">
+                            En savoir plus →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Escaliers -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2">
+                    <div class="h-40 bg-gradient-to-br from-construction-400 to-construction-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Escaliers" 
+                             class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur rounded-lg flex items-center justify-center">
+                            <i class="fas fa-stairs text-white text-sm"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Escaliers</h3>
+                        <p class="text-gray-600 text-sm mb-3">Béton, pierre naturelle, sécurisés</p>
+                        <a href="contact.html" class="text-construction-600 font-semibold hover:text-construction-700 transition-colors text-sm">
+                            En savoir plus →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-construction-600 to-construction-800 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="relative max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl md:text-5xl font-black text-white mb-6">
+                Besoin d'un <span class="text-construction-200">devis</span> ?
+            </h2>
+            <p class="text-xl text-construction-100 mb-8 max-w-2xl mx-auto">
+                Analyse gratuite de votre projet, intervention rapide dans le Nord Isère et Grand Lyon. 
+                Devis détaillé sous 48h pour tous vos travaux de maçonnerie.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html" 
+                   class="bg-white text-construction-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-xl">
+                    <i class="fas fa-calculator mr-2"></i>
+                    Devis Gratuit
+                </a>
+                <a href="tel:0474XXXXXX" 
+                   class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-construction-700 transform hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-phone mr-2"></i>
+                    04 74 XX XX XX
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-construction-600 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-hard-hat text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">DA SILVA CONSTRUCTION</h3>
+                            <p class="text-gray-400">Maçonnerie Générale</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Entreprise familiale de maçonnerie générale depuis 1998. 
+                        Savoir-faire traditionnel et techniques modernes au service de vos projets.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-construction-600 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-construction-600 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-construction-600 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Navigation</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-300 hover:text-construction-400 transition-colors">Accueil</a></li>
+                        <li><a href="prestations.html" class="text-gray-300 hover:text-construction-400 transition-colors">Prestations</a></li>
+                        <li><a href="apropos.html" class="text-gray-300 hover:text-construction-400 transition-colors">À Propos</a></li>
+                        <li><a href="avis.html" class="text-gray-300 hover:text-construction-400 transition-colors">Avis Clients</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Contact</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-map-marker-alt text-construction-400"></i>
+                            <span class="text-gray-300">Près de Bourgoin-Jallieu (38300)</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-construction-400"></i>
+                            <a href="tel:0474XXXXXX" class="text-gray-300 hover:text-construction-400 transition-colors">04 74 XX XX XX</a>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-construction-400"></i>
+                            <a href="contact.html" class="text-gray-300 hover:text-construction-400 transition-colors">Formulaire de contact</a>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-clock text-construction-400"></i>
+                            <span class="text-gray-300">Lun-Ven: 8h-18h</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom Footer -->
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">
+                    &copy; 2025 DA SILVA CONSTRUCTION - SAS - Tous droits réservés
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - DA SILVA CONSTRUCTION | Devis Gratuit Bourgoin-Jallieu</title>
+    <meta name="description" content="Contactez DA SILVA CONSTRUCTION pour votre devis gratuit. Maçonnerie à Bourgoin-Jallieu, Nord Isère, Grand Lyon. Intervention rapide, analyse sous 48h.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        'construction': {
+                            50: '#fefbf3',
+                            100: '#fdf4e1',
+                            200: '#fae6c3',
+                            300: '#f6d299',
+                            400: '#f0b86d',
+                            500: '#ea9d4a',
+                            600: '#dc8332',
+                            700: '#b7672a',
+                            800: '#945229',
+                            900: '#794425',
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'fade-in-down': 'fadeInDown 0.8s ease-out',
+                        'scale-in': 'scaleIn 0.6s ease-out',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out',
+                        'slide-in-right': 'slideInRight 0.8s ease-out',
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.125);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-sans" x-data="{ 
+    mobileMenuOpen: false, 
+    scrolled: false,
+    loaded: false
+}" x-init="
+    loaded = true;
+    window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 });
+">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" 
+            :class="scrolled ? 'glass-effect shadow-xl' : 'bg-white'">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex items-center justify-between h-20">
+                <!-- Brand -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-12 bg-white rounded-xl flex items-center justify-center p-1 shadow-sm">
+                        <img src="assets/images/logo_da_silva_construction.jpeg" 
+                            alt="Logo DA SILVA CONSTRUCTION" 
+                            class="w-full h-full object-contain filter brightness-110 contrast-110">
+                    </div>
+                    <div>
+                        <h1 class="text-x2 font-bold text-gray-900" :class="scrolled ? 'text-gray-900' : 'text-black'">DA SILVA CONSTRUCTION</h1>
+                        <p class="text-sm text-gray-600" :class="scrolled ? 'text-gray-600' : 'text-black-200'">Maçonnerie Générale</p>
+                    </div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">Accueil</a>
+                    <a href="prestations.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">Prestations</a>
+                    <a href="apropos.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">À Propos</a>
+                    <a href="fournisseurs.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">Partenaires</a>
+                    <a href="avis.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">Avis</a>
+                    <a href="contact.html" class="font-medium text-construction-600">Contact</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button @click="mobileMenuOpen = !mobileMenuOpen" 
+                        class="lg:hidden p-2 rounded-lg" 
+                        :class="scrolled ? 'text-black-900' : 'text-white'">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </nav>
+            
+            <!-- Mobile Menu -->
+            <div x-show="mobileMenuOpen" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 transform -translate-y-2"
+                 x-transition:enter-end="opacity-100 transform translate-y-0"
+                 class="lg:hidden bg-white rounded-xl shadow-xl mt-2 p-4 space-y-4">
+                <a href="index.html" class="block font-medium text-gray-700 hover:text-construction-600">Accueil</a>
+                <a href="prestations.html" class="block font-medium text-gray-700 hover:text-construction-600">Prestations</a>
+                <a href="apropos.html" class="block font-medium text-gray-700 hover:text-construction-600">À Propos</a>
+                <a href="fournisseurs.html" class="block font-medium text-gray-700 hover:text-construction-600">Partenaires</a>
+                <a href="avis.html" class="block font-medium text-gray-700 hover:text-construction-600">Avis</a>
+                <a href="contact.html" class="block font-medium text-construction-600">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+                 alt="Contact DA Silva Construction" 
+                 class="w-full h-full object-cover">
+            <div class="hero-gradient absolute inset-0"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4"
+             x-show="loaded" 
+             x-transition:enter="transition ease-out duration-1000"
+             x-transition:enter-start="opacity-0 transform translate-y-10"
+             x-transition:enter-end="opacity-100 transform translate-y-0">
+            
+            <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+                Nous<br>
+                <span class="text-construction-400">Contacter</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl mb-4 text-gray-200 font-light">
+                Besoin de DA SILVA CONSTRUCTION ?
+            </p>
+            
+            <p class="text-lg md:text-xl mb-8 text-gray-300 max-w-2xl mx-auto">
+                <span class="font-semibold text-construction-300">Nous pouvons vous aider !</span><br>
+                Devis gratuit sous 48h • Intervention rapide • Analyse de situation
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#formulaire" 
+                   class="bg-construction-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-construction-700 transform hover:scale-105 transition-all duration-300 shadow-2xl">
+                    <i class="fas fa-file-alt mr-2"></i>
+                    Devis Gratuit
+                </a>
+                <a href="tel:0474XXXXXX" 
+                   class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-gray-900 transform hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-phone mr-2"></i>
+                    04 74 XX XX XX
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Contact Direct -->
+    <section class="py-20 bg-construction-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Contactez-nous <span class="text-construction-600">directement</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Plusieurs moyens de nous joindre pour votre projet de maçonnerie
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Téléphone -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="p-8 text-center">
+                        <div class="w-20 h-20 bg-construction-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-construction-200 transition-colors duration-300 floating">
+                            <i class="fas fa-phone text-3xl text-construction-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Téléphone</h3>
+                        <div class="text-2xl font-bold text-construction-600 mb-2">04 74 XX XX XX</div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Lun-Ven : 8h-17h<br>
+                            Samedi : 8h-12h
+                        </p>
+                        <a href="tel:0474XXXXXX" 
+                           class="bg-construction-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-construction-700 transform hover:scale-105 transition-all duration-300 inline-block">
+                            Appeler maintenant
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="p-8 text-center">
+                        <div class="w-20 h-20 bg-construction-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-construction-200 transition-colors duration-300 floating">
+                            <i class="fas fa-envelope text-3xl text-construction-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Email</h3>
+                        <div class="text-sm font-semibold text-construction-600 mb-2">contact@dasilva-construction.com</div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Réponse sous 24h<br>
+                            Devis par email possible
+                        </p>
+                        <a href="mailto:contact@dasilva-construction.com" 
+                           class="bg-construction-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-construction-700 transform hover:scale-105 transition-all duration-300 inline-block">
+                            Envoyer un email
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Localisation -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="p-8 text-center">
+                        <div class="w-20 h-20 bg-construction-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-construction-200 transition-colors duration-300 floating">
+                            <i class="fas fa-map-marker-alt text-3xl text-construction-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Localisation</h3>
+                        <div class="text-lg font-semibold text-construction-600 mb-2">Bourgoin-Jallieu</div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Nord Isère (38300)<br>
+                            Proche Grand Lyon
+                        </p>
+                        <a href="#zone-intervention" 
+                           class="bg-construction-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-construction-700 transform hover:scale-105 transition-all duration-300 inline-block">
+                            Zone d'intervention
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Urgences -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="p-8 text-center">
+                        <div class="w-20 h-20 bg-construction-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-construction-200 transition-colors duration-300 floating">
+                            <i class="fas fa-bolt text-3xl text-construction-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Intervention Rapide</h3>
+                        <div class="text-lg font-semibold text-construction-600 mb-2">Devis sous 48h</div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Chantiers d'urgence<br>
+                            Analyse rapide
+                        </p>
+                        <a href="tel:0474XXXXXX" 
+                           class="bg-construction-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-construction-700 transform hover:scale-105 transition-all duration-300 inline-block">
+                            Contact urgent
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulaire -->
+    <section id="formulaire" class="py-20 bg-white" x-data="contactForm()">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Demande de <span class="text-construction-600">Devis Gratuit</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Décrivez votre projet en détail, nous vous répondons rapidement avec un devis personnalisé
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-12">
+                <!-- Formulaire -->
+                <div class="lg:col-span-2">
+                    <div class="bg-gray-50 rounded-2xl p-8 shadow-xl">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">
+                            <i class="fas fa-file-alt text-construction-600 mr-3"></i>
+                            Votre Projet en Détail
+                        </h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Prénom *</label>
+                                <input type="text" x-model="form.prenom" required
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Nom *</label>
+                                <input type="text" x-model="form.nom" required
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Email *</label>
+                                <input type="email" x-model="form.email" required
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Téléphone</label>
+                                <input type="tel" x-model="form.telephone"
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Ville *</label>
+                                <input type="text" x-model="form.ville" placeholder="ex: Bourgoin-Jallieu" required
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Code postal</label>
+                                <input type="text" x-model="form.codepostal" placeholder="38300"
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-semibold mb-2">Type de projet *</label>
+                            <select x-model="form.typeprojet" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                                <option value="">Sélectionnez votre projet...</option>
+                                <option value="construction-maison">Construction maison individuelle</option>
+                                <option value="construction-collectif">Construction logement collectif</option>
+                                <option value="extension">Extension / Surélévation</option>
+                                <option value="renovation-ancienne">Rénovation bâtiment ancien</option>
+                                <option value="renovation-moderne">Rénovation moderne</option>
+                                <option value="ouvertures">Création d'ouvertures</option>
+                                <option value="piscine">Construction piscine</option>
+                                <option value="amenagement">Aménagement extérieur</option>
+                                <option value="local-pro">Local professionnel</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Surface approximative</label>
+                                <input type="text" x-model="form.surface" placeholder="ex: 150m², 30m² d'extension..."
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Budget envisagé</label>
+                                <select x-model="form.budget"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                                    <option value="">Sélectionnez...</option>
+                                    <option value="moins-50k">Moins de 50 000€</option>
+                                    <option value="50k-100k">50 000€ - 100 000€</option>
+                                    <option value="100k-200k">100 000€ - 200 000€</option>
+                                    <option value="200k-plus">Plus de 200 000€</option>
+                                    <option value="non-defini">Non défini</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-semibold mb-2">Délai souhaité</label>
+                            <select x-model="form.delai"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                                <option value="">Sélectionnez...</option>
+                                <option value="urgent">Urgent (moins de 1 mois)</option>
+                                <option value="3-mois">Dans les 3 mois</option>
+                                <option value="6-mois">Dans les 6 mois</option>
+                                <option value="1-an">Dans l'année</option>
+                                <option value="plus-tard">Plus tard</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-semibold mb-2">Description de votre projet *</label>
+                            <textarea x-model="form.description" rows="5" required
+                                      placeholder="Décrivez votre projet en détail : type de construction, matériaux souhaités, contraintes particulières..."
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300 resize-none"></textarea>
+                        </div>
+                        
+                        <div class="space-y-3 mb-8">
+                            <label class="flex items-center">
+                                <input type="checkbox" x-model="form.visite" class="w-5 h-5 text-construction-600 border-gray-300 rounded focus:ring-construction-500">
+                                <span class="ml-3 text-gray-700">Je souhaite une visite sur site pour une estimation précise</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" x-model="form.newsletter" class="w-5 h-5 text-construction-600 border-gray-300 rounded focus:ring-construction-500">
+                                <span class="ml-3 text-gray-700">Je souhaite recevoir des informations sur vos actualités</span>
+                            </label>
+                        </div>
+                        
+                        <button @click="submitForm()" :disabled="submitting"
+                                class="w-full bg-construction-600 text-white py-4 px-8 rounded-lg font-bold text-lg hover:bg-construction-700 transform hover:scale-105 transition-all duration-300 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed">
+                            <span x-show="!submitting">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                Envoyer ma demande de devis
+                            </span>
+                            <span x-show="submitting">
+                                <i class="fas fa-spinner fa-spin mr-2"></i>
+                                Envoi en cours...
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Informations Pratiques -->
+                <div class="lg:col-span-1">
+                    <div class="bg-gradient-to-br from-construction-600 to-construction-800 rounded-2xl p-8 text-white shadow-xl">
+                        <h3 class="text-2xl font-bold mb-8 text-center">
+                            <i class="fas fa-info-circle text-construction-200 mr-3"></i>
+                            Informations Pratiques
+                        </h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-construction-200 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-clock text-construction-800 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-construction-100 mb-1">Horaires d'ouverture</h4>
+                                    <p class="text-construction-200 text-sm">
+                                        Lun-Ven : 8h-17h<br>
+                                        Samedi : 8h-12h<br>
+                                        Dimanche : Fermé
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-construction-200 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-tachometer-alt text-construction-800 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-construction-100 mb-1">Réactivité</h4>
+                                    <p class="text-construction-200 text-sm">
+                                        Devis gratuit sous 48h<br>
+                                        Réponse email sous 24h<br>
+                                        Visite sur site possible
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-construction-200 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-tools text-construction-800 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-construction-100 mb-1">Expertise</h4>
+                                    <p class="text-construction-200 text-sm">
+                                        40 ans d'expérience<br>
+                                        Entreprise familiale<br>
+                                        Techniques modernes
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-construction-200 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-shield-alt text-construction-800 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-construction-100 mb-1">Garanties</h4>
+                                    <p class="text-construction-200 text-sm">
+                                        Assurance décennale<br>
+                                        Responsabilité pro<br>
+                                        Parfait achèvement
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-construction-200 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-handshake text-construction-800 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-construction-100 mb-1">Partenaires</h4>
+                                    <p class="text-construction-200 text-sm">
+                                        Xella Thermopierre<br>
+                                        Wienerberger<br>
+                                        Matériaux de qualité
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processus -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Notre <span class="text-construction-600">Processus</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    De votre demande à la réalisation, un accompagnement professionnel à chaque étape
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <div class="text-center group" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-20 h-20 bg-construction-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 font-bold text-2xl group-hover:bg-construction-700 transition-colors duration-300 floating">
+                        1
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Analyse Situation</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Étude approfondie de votre projet et de ses contraintes techniques.
+                    </p>
+                </div>
+                
+                <div class="text-center group" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-20 h-20 bg-construction-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 font-bold text-2xl group-hover:bg-construction-700 transition-colors duration-300 floating">
+                        2
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Devis Gratuit</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Établissement d'un devis détaillé sous 48h, visite sur site si nécessaire.
+                    </p>
+                </div>
+                
+                <div class="text-center group" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-20 h-20 bg-construction-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 font-bold text-2xl group-hover:bg-construction-700 transition-colors duration-300 floating">
+                        3
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Planification</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Organisation du chantier et coordination avec les autres corps d'état.
+                    </p>
+                </div>
+                
+                <div class="text-center group" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-20 h-20 bg-construction-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 font-bold text-2xl group-hover:bg-construction-700 transition-colors duration-300 floating">
+                        4
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Intervention</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Réalisation des travaux dans les délais avec suivi qualité constant.
+                    </p>
+                </div>
+                
+                <div class="text-center group" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-20 h-20 bg-construction-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 font-bold text-2xl group-hover:bg-construction-700 transition-colors duration-300 floating">
+                        5
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Réception</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Livraison de votre projet fini avec explications et garanties.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zone d'Intervention -->
+    <section id="zone-intervention" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Zone d'<span class="text-construction-600">Intervention</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Nord Isère, Grand Lyon et départements limitrophes pour tous vos projets de maçonnerie
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-construction-50 rounded-2xl p-8 text-center hover:bg-construction-100 transition-colors duration-300 border-l-4 border-construction-600" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-16 h-16 bg-construction-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-home text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">🏠 Bourgoin-Jallieu</h3>
+                    <p class="text-gray-600">Siège social - Intervention prioritaire dans un rayon de 15km</p>
+                </div>
+                
+                <div class="bg-construction-50 rounded-2xl p-8 text-center hover:bg-construction-100 transition-colors duration-300 border-l-4 border-construction-600" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-16 h-16 bg-construction-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-map text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">🌍 Nord Isère</h3>
+                    <p class="text-gray-600">La Tour-du-Pin, Nivolas-Vermelle, Ruy-Montceau, Saint-Chef, Crémieu...</p>
+                </div>
+                
+                <div class="bg-construction-50 rounded-2xl p-8 text-center hover:bg-construction-100 transition-colors duration-300 border-l-4 border-construction-600" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-16 h-16 bg-construction-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-city text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">🏙️ Grand Lyon</h3>
+                    <p class="text-gray-600">Lyon et périphérie Est, Meyzieu, Décines, Vaulx-en-Velin, Villefontaine...</p>
+                </div>
+                
+                <div class="bg-construction-50 rounded-2xl p-8 text-center hover:bg-construction-100 transition-colors duration-300 border-l-4 border-construction-600" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-16 h-16 bg-construction-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-map-marker-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">📍 Départements Limitrophes</h3>
+                    <p class="text-gray-600">Projets spécifiques étudiés selon importance et envergure</p>
+                </div>
+                
+                <div class="bg-construction-50 rounded-2xl p-8 text-center hover:bg-construction-100 transition-colors duration-300 border-l-4 border-construction-600 md:col-span-2 lg:col-span-1" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-16 h-16 bg-construction-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-globe text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">🚀 National</h3>
+                    <p class="text-gray-600">Déplacements nationaux possibles pour projets atypiques</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-construction-600 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-hard-hat text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">DA SILVA CONSTRUCTION</h3>
+                            <p class="text-gray-400">Maçonnerie Générale</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        Votre partenaire maçonnerie depuis 1998. Entreprise familiale de confiance.
+                    </p>
+                </div>
+                
+                <!-- Contact Rapide -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Contact Rapide</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-construction-400"></i>
+                            <a href="tel:0474XXXXXX" class="text-gray-300 hover:text-construction-400 transition-colors">04 74 XX XX XX</a>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-construction-400"></i>
+                            <a href="mailto:contact@dasilva-construction.com" class="text-gray-300 hover:text-construction-400 transition-colors">Email</a>
+                        </li>
+                        <li class="text-gray-300">Lun-Ven: 8h-17h</li>
+                        <li class="text-gray-300">Sam: 8h-12h</li>
+                    </ul>
+                </div>
+                
+                <!-- Zone d'Intervention -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Zone d'Intervention</h4>
+                    <ul class="space-y-3">
+                        <li class="text-gray-300">Bourgoin-Jallieu (38300)</li>
+                        <li class="text-gray-300">Nord Isère</li>
+                        <li class="text-gray-300">Grand Lyon</li>
+                        <li class="text-gray-300">Départements limitrophes</li>
+                    </ul>
+                </div>
+                
+                <!-- Nos Garanties -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Nos Garanties</h4>
+                    <ul class="space-y-3">
+                        <li class="text-gray-300">Devis gratuit sous 48h</li>
+                        <li class="text-gray-300">Assurance décennale</li>
+                        <li class="text-gray-300">Parfait achèvement</li>
+                        <li class="text-gray-300">Intervention rapide</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom Footer -->
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">
+                    &copy; 2025 SAS DA SILVA CONSTRUCTION - Tous droits réservés
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function contactForm() {
+            return {
+                form: {
+                    prenom: '',
+                    nom: '',
+                    email: '',
+                    telephone: '',
+                    ville: '',
+                    codepostal: '',
+                    typeprojet: '',
+                    surface: '',
+                    budget: '',
+                    delai: '',
+                    description: '',
+                    visite: false,
+                    newsletter: false
+                },
+                submitting: false,
+                
+                async submitForm() {
+                    if (!this.validateForm()) {
+                        return;
+                    }
+                    
+                    this.submitting = true;
+                    
+                    try {
+                        // Simulation d'envoi
+                        await new Promise(resolve => setTimeout(resolve, 2000));
+                        
+                        alert('Merci pour votre demande ! Nous vous contactons dans les 24h pour votre devis gratuit.');
+                        this.resetForm();
+                        
+                    } catch (error) {
+                        alert('Une erreur est survenue. Veuillez réessayer ou nous contacter par téléphone.');
+                    } finally {
+                        this.submitting = false;
+                    }
+                },
+                
+                validateForm() {
+                    if (!this.form.prenom || !this.form.nom || !this.form.email || 
+                        !this.form.ville || !this.form.typeprojet || !this.form.description) {
+                        alert('Veuillez remplir tous les champs obligatoires (*)');
+                        return false;
+                    }
+                    
+                    if (!this.isValidEmail(this.form.email)) {
+                        alert('Veuillez saisir un email valide');
+                        return false;
+                    }
+                    
+                    return true;
+                },
+                
+                isValidEmail(email) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    return emailRegex.test(email);
+                },
+                
+                resetForm() {
+                    this.form = {
+                        prenom: '',
+                        nom: '',
+                        email: '',
+                        telephone: '',
+                        ville: '',
+                        codepostal: '',
+                        typeprojet: '',
+                        surface: '',
+                        budget: '',
+                        delai: '',
+                        description: '',
+                        visite: false,
+                        newsletter: false
+                    };
+                }
+            }
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

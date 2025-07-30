@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avis Clients - DA SILVA CONSTRUCTION | Témoignages</title>
+    <meta name="description" content="Découvrez les avis et témoignages de nos clients satisfaits. 40 ans d'expérience en maçonnerie dans le Nord Isère et Grand Lyon. Note moyenne 4.8/5.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        'construction': {
+                            50: '#fefbf3',
+                            100: '#fdf4e1',
+                            200: '#fae6c3',
+                            300: '#f6d299',
+                            400: '#f0b86d',
+                            500: '#ea9d4a',
+                            600: '#dc8332',
+                            700: '#b7672a',
+                            800: '#945229',
+                            900: '#794425',
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'fade-in-down': 'fadeInDown 0.8s ease-out',
+                        'scale-in': 'scaleIn 0.6s ease-out',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out',
+                        'slide-in-right': 'slideInRight 0.8s ease-out',
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.125);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-sans" x-data="{ 
+    mobileMenuOpen: false, 
+    scrolled: false,
+    loaded: false,
+    currentFilter: 'all',
+    counters: { satisfaction: 0, rating: 0, projects: 0, years: 0 }
+}" x-init="
+    loaded = true;
+    window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 });
+    
+    // Animation des compteurs
+    setTimeout(() => {
+        const animateCounter = (target, end, duration, key) => {
+            const increment = end / (duration / 16);
+            let current = 0;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= end) {
+                    current = end;
+                    clearInterval(timer);
+                }
+                counters[key] = key === 'rating' ? current.toFixed(1) : Math.floor(current);
+            }, 16);
+        };
+        
+        animateCounter(0, 98, 2000, 'satisfaction');
+        animateCounter(0, 4.8, 2000, 'rating');
+        animateCounter(0, 200, 2500, 'projects');
+        animateCounter(0, 40, 2000, 'years');
+    }, 1000);
+">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" 
+            :class="scrolled ? 'glass-effect shadow-xl' : 'bg-white'">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex items-center justify-between h-20">
+                <!-- Brand -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-12 bg-white rounded-xl flex items-center justify-center p-1 shadow-sm">
+                        <img src="assets/images/logo_da_silva_construction.jpeg" 
+                            alt="Logo DA SILVA CONSTRUCTION" 
+                            class="w-full h-full object-contain filter brightness-110 contrast-110">
+                    </div>
+                    <div>
+                        <h1 class="text-x2 font-bold text-gray-900" :class="scrolled ? 'text-gray-900' : 'text-black'">DA SILVA CONSTRUCTION</h1>
+                        <p class="text-sm text-gray-600" :class="scrolled ? 'text-black-600' : 'text-black-200'">Maçonnerie Générale</p>
+                    </div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">Accueil</a>
+                    <a href="prestations.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">Prestations</a>
+                    <a href="apropos.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">À Propos</a>
+                    <a href="fournisseurs.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">Partenaires</a>
+                    <a href="avis.html" class="font-medium text-construction-600">Avis</a>
+                    <a href="contact.html" class="bg-construction-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-construction-700 transition-colors">
+                        Contact
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button @click="mobileMenuOpen = !mobileMenuOpen" 
+                        class="lg:hidden p-2 rounded-lg" 
+                        :class="scrolled ? 'text-gray-900' : 'text-white'">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </nav>
+            
+            <!-- Mobile Menu -->
+            <div x-show="mobileMenuOpen" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 transform -translate-y-2"
+                 x-transition:enter-end="opacity-100 transform translate-y-0"
+                 class="lg:hidden bg-white rounded-xl shadow-xl mt-2 p-4 space-y-4">
+                <a href="index.html" class="block font-medium text-gray-700 hover:text-construction-600">Accueil</a>
+                <a href="prestations.html" class="block font-medium text-gray-700 hover:text-construction-600">Prestations</a>
+                <a href="apropos.html" class="block font-medium text-gray-700 hover:text-construction-600">À Propos</a>
+                <a href="fournisseurs.html" class="block font-medium text-gray-700 hover:text-construction-600">Partenaires</a>
+                <a href="avis.html" class="block font-medium text-construction-600">Avis</a>
+                <a href="contact.html" class="block bg-construction-600 text-white text-center py-3 rounded-lg font-semibold">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+                 alt="Clients satisfaits DA Silva Construction" 
+                 class="w-full h-full object-cover">
+            <div class="hero-gradient absolute inset-0"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4"
+             x-show="loaded" 
+             x-transition:enter="transition ease-out duration-1000"
+             x-transition:enter-start="opacity-0 transform translate-y-10"
+             x-transition:enter-end="opacity-100 transform translate-y-0">
+            
+            <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+                Avis de nos<br>
+                <span class="text-construction-400">Clients</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl mb-4 text-gray-200 font-light">
+                Leur satisfaction est notre priorité
+            </p>
+            
+            <p class="text-lg md:text-xl mb-8 text-gray-300 max-w-2xl mx-auto">
+                Découvrez les témoignages de nos clients qui nous font confiance depuis<br>
+                <span class="font-semibold text-construction-300">plus de 25 ans</span> pour leurs projets de maçonnerie.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#avis" 
+                   class="bg-construction-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-construction-700 transform hover:scale-105 transition-all duration-300 shadow-2xl">
+                    <i class="fas fa-comments mr-2"></i>
+                    Voir les Avis
+                </a>
+                <a href="#laisser-avis" 
+                   class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-gray-900 transform hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-edit mr-2"></i>
+                    Laisser un Avis
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 bg-construction-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center group">
+                    <div class="bg-white rounded-2xl p-8 group-hover:bg-construction-100 transition-colors shadow-lg">
+                        <div class="text-4xl md:text-5xl font-black text-construction-600 mb-2" x-text="counters.satisfaction + '%'"></div>
+                        <p class="text-gray-600 font-medium text-lg">Satisfaction</p>
+                        <p class="text-gray-500 text-sm mt-1">Clients recommandent</p>
+                    </div>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="bg-white rounded-2xl p-8 group-hover:bg-construction-100 transition-colors shadow-lg">
+                        <div class="text-4xl md:text-5xl font-black text-construction-600 mb-2" x-text="counters.rating + '/5'"></div>
+                        <p class="text-gray-600 font-medium text-lg">Note Moyenne</p>
+                        <p class="text-gray-500 text-sm mt-1">Sur Google</p>
+                    </div>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="bg-white rounded-2xl p-8 group-hover:bg-construction-100 transition-colors shadow-lg">
+                        <div class="text-4xl md:text-5xl font-black text-construction-600 mb-2" x-text="counters.projects + '+'"></div>
+                        <p class="text-gray-600 font-medium text-lg">Projets Réalisés</p>
+                        <p class="text-gray-500 text-sm mt-1">Depuis 1998</p>
+                    </div>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="bg-white rounded-2xl p-8 group-hover:bg-construction-100 transition-colors shadow-lg">
+                        <div class="text-4xl md:text-5xl font-black text-construction-600 mb-2" x-text="counters.years"></div>
+                        <p class="text-gray-600 font-medium text-lg">Années</p>
+                        <p class="text-gray-500 text-sm mt-1">D'expérience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtres -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Témoignages par <span class="text-construction-600">Catégorie</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Particuliers et professionnels nous font confiance pour tous types de projets
+                </p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button @click="currentFilter = 'all'" 
+                        :class="currentFilter === 'all' ? 'bg-construction-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'"
+                        class="px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                    Tous les avis
+                </button>
+                <button @click="currentFilter = 'construction'" 
+                        :class="currentFilter === 'construction' ? 'bg-construction-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'"
+                        class="px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                    Constructions
+                </button>
+                <button @click="currentFilter = 'renovation'" 
+                        :class="currentFilter === 'renovation' ? 'bg-construction-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'"
+                        class="px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                    Rénovations
+                </button>
+                <button @click="currentFilter = 'extension'" 
+                        :class="currentFilter === 'extension' ? 'bg-construction-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'"
+                        class="px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                    Extensions
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Avis Clients -->
+    <section id="avis" class="py-20 bg-gray-50" x-data="avisData()">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <template x-for="avis in filteredAvis" :key="avis.id">
+                    <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')" x-show="showAvis(avis)" x-transition>
+                        <div class="p-8">
+                            <!-- Header avec avatar et infos client -->
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 bg-gradient-to-br from-construction-400 to-construction-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4" x-text="avis.initials"></div>
+                                <div class="flex-1">
+                                    <h3 class="text-lg font-bold text-gray-900" x-text="avis.name"></h3>
+                                    <p class="text-gray-600 text-sm" x-text="avis.location"></p>
+                                    <p class="text-construction-600 font-semibold text-sm" x-text="avis.project"></p>
+                                </div>
+                            </div>
+                            
+                            <!-- Rating -->
+                            <div class="flex mb-4">
+                                <template x-for="i in 5">
+                                    <i class="fas fa-star text-yellow-400 mr-1" x-show="i <= avis.rating"></i>
+                                </template>
+                                <template x-for="i in 5">
+                                    <i class="far fa-star text-gray-300 mr-1" x-show="i > avis.rating"></i>
+                                </template>
+                            </div>
+                            
+                            <!-- Contenu de l'avis -->
+                            <div class="mb-6">
+                                <p class="text-gray-700 leading-relaxed italic" x-text="'"' + avis.content + '"'"></p>
+                            </div>
+                            
+                            <!-- Date -->
+                            <div class="text-right">
+                                <span class="text-gray-500 text-sm" x-text="avis.date"></span>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Avis -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                Retrouvez-nous sur <span class="text-construction-600">Google</span>
+            </h2>
+            <p class="text-xl text-gray-600 mb-8">
+                Consultez tous nos avis clients et laissez le vôtre directement sur Google
+            </p>
+            
+            <div class="bg-gray-50 rounded-2xl p-8 mb-8">
+                <div class="flex items-center justify-center mb-6">
+                    <i class="fab fa-google text-4xl text-blue-500 mr-4"></i>
+                    <div class="text-left">
+                        <div class="text-3xl font-bold text-gray-900">4.8/5</div>
+                        <div class="flex mb-2">
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                        </div>
+                        <p class="text-gray-600">Basé sur 6 avis Google</p>
+                    </div>
+                </div>
+                
+                <a href="https://www.google.com/search?q=DA+SILVA+CONSTRUCTION+Saint+Agnin+sur+Bion" target="_blank"
+                   class="bg-construction-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-construction-700 transform hover:scale-105 transition-all duration-300 shadow-xl inline-flex items-center">
+                    <i class="fab fa-google mr-3"></i>
+                    Voir tous nos avis Google
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulaire Avis -->
+    <section id="laisser-avis" class="py-20 bg-gray-50" x-data="avisForm()">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Laissez votre <span class="text-construction-600">Avis</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Votre expérience nous intéresse ! Partagez votre avis pour aider d'autres clients et nous améliorer.
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Nom *</label>
+                        <input type="text" x-model="form.nom" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Ville</label>
+                        <input type="text" x-model="form.ville" placeholder="ex: Bourgoin-Jallieu"
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-semibold mb-2">Type de projet</label>
+                    <select x-model="form.projet"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                        <option value="">Sélectionnez...</option>
+                        <option value="construction">Construction neuve</option>
+                        <option value="renovation">Rénovation</option>
+                        <option value="extension">Extension</option>
+                        <option value="piscine">Piscine</option>
+                        <option value="amenagement">Aménagement extérieur</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-semibold mb-3">Note *</label>
+                    <div class="flex space-x-2">
+                        <template x-for="i in 5">
+                            <button @click="form.rating = i" 
+                                    :class="i <= form.rating ? 'text-yellow-400' : 'text-gray-300'"
+                                    class="text-3xl hover:text-yellow-400 transition-colors duration-200">
+                                <i class="fas fa-star"></i>
+                            </button>
+                        </template>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <label class="block text-gray-700 font-semibold mb-2">Votre avis *</label>
+                    <textarea x-model="form.commentaire" rows="5" required
+                              placeholder="Partagez votre expérience avec DA SILVA CONSTRUCTION..."
+                              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300 resize-none"></textarea>
+                </div>
+                
+                <div class="text-center">
+                    <button @click="submitAvis()" :disabled="submitting"
+                            class="bg-construction-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-construction-700 transform hover:scale-105 transition-all duration-300 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed">
+                        <span x-show="!submitting">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Publier mon avis
+                        </span>
+                        <span x-show="submitting">
+                            <i class="fas fa-spinner fa-spin mr-2"></i>
+                            Publication en cours...
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-construction-600 to-construction-800 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="relative max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl md:text-5xl font-black text-white mb-6">
+                Rejoignez nos clients <span class="text-construction-200">satisfaits</span>
+            </h2>
+            <p class="text-xl text-construction-100 mb-8 max-w-2xl mx-auto">
+                Découvrez pourquoi 98% de nos clients nous recommandent et font appel à nous pour leurs nouveaux projets.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html" 
+                   class="bg-white text-construction-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-xl">
+                    <i class="fas fa-calculator mr-2"></i>
+                    Demander un Devis
+                </a>
+                <a href="prestations.html" 
+                   class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-construction-700 transform hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-tools mr-2"></i>
+                    Nos Prestations
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-construction-600 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-hard-hat text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">DA SILVA CONSTRUCTION</h3>
+                            <p class="text-gray-400">Maçonnerie Générale</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        98% de clients satisfaits depuis 1998. Une entreprise familiale qui place 
+                        la qualité et la satisfaction client au cœur de ses priorités.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-construction-600 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-construction-600 transition-colors">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-construction-600 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Satisfaction -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Notre Satisfaction</h4>
+                    <ul class="space-y-3">
+                        <li class="text-gray-300">98% de satisfaction client</li>
+                        <li class="text-gray-300">Note Google : 4.8/5</li>
+                        <li class="text-gray-300">200+ projets réalisés</li>
+                        <li class="text-gray-300">40 ans d'expérience</li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Contact</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-map-marker-alt text-construction-400"></i>
+                            <span class="text-gray-300">Près de Bourgoin-Jallieu (38300)</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-construction-400"></i>
+                            <a href="tel:0474XXXXXX" class="text-gray-300 hover:text-construction-400 transition-colors">04 74 XX XX XX</a>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-construction-400"></i>
+                            <a href="contact.html" class="text-gray-300 hover:text-construction-400 transition-colors">Devis gratuit</a>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-clock text-construction-400"></i>
+                            <span class="text-gray-300">Lun-Ven: 8h-18h</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom Footer -->
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">
+                    &copy; 2025 DA SILVA CONSTRUCTION - Tous droits réservés
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function avisData() {
+            return {
+                avis: [
+                    {
+                        id: 1,
+                        name: 'Client PagesJaunes',
+                        initials: 'CP',
+                        location: 'Nord Isère',
+                        project: 'Plusieurs chantiers',
+                        category: 'all',
+                        rating: 5,
+                        content: 'Nous avons confié plusieurs chantiers à l\'entreprise Da Silva. Nous avons toujours été satisfait de leurs conseils avisés, de leur professionnalisme et de la qualité des réalisations. Je conseille sincèrement l\'entreprise Da silva à toute personne recherchant un maçon sérieux et de confiance.',
+                        date: 'Décembre 2024'
+                    },
+                    {
+                        id: 2,
+                        name: 'Famille Martin',
+                        initials: 'FM',
+                        location: 'Bourgoin-Jallieu',
+                        project: 'Construction maison 140m²',
+                        category: 'construction',
+                        rating: 5,
+                        content: 'Excellent travail de Marco et son équipe ! Notre maison a été construite dans les délais avec des finitions parfaites. L\'utilisation du béton cellulaire Xella nous garantit une excellente isolation. Nous recommandons vivement !',
+                        date: 'Novembre 2024'
+                    },
+                    {
+                        id: 3,
+                        name: 'Jean-Luc D.',
+                        initials: 'JD',
+                        location: 'La Tour-du-Pin',
+                        project: 'Rénovation maison ancienne',
+                        category: 'renovation',
+                        rating: 5,
+                        content: 'DA SILVA CONSTRUCTION a su redonner vie à notre maison de 1890. Ils ont respecté les techniques traditionnelles tout en apportant la modernité nécessaire. Travail remarquable sur la création d\'ouvertures.',
+                        date: 'Octobre 2024'
+                    },
+                    {
+                        id: 4,
+                        name: 'Sandrine L.',
+                        initials: 'SL',
+                        location: 'Villefontaine',
+                        project: 'Extension 45m²',
+                        category: 'extension',
+                        rating: 5,
+                        content: 'Extension parfaitement intégrée à notre maison existante. L\'équipe est très professionnelle, à l\'écoute et respecte les délais. La qualité des matériaux et des finitions est exemplaire.',
+                        date: 'Septembre 2024'
+                    },
+                    {
+                        id: 5,
+                        name: 'Philippe R.',
+                        initials: 'PR',
+                        location: 'Bourgoin-Jallieu',
+                        project: 'Piscine 8x4m + terrasse',
+                        category: 'construction',
+                        rating: 5,
+                        content: 'Réalisation impeccable de notre piscine avec local technique intégré. Les aménagements périphériques en béton désactivé sont magnifiques. Merci à toute l\'équipe pour leur professionnalisme !',
+                        date: 'Août 2024'
+                    },
+                    {
+                        id: 6,
+                        name: 'Entreprise Lyon-Nord',
+                        initials: 'EL',
+                        location: 'Lyon 6ème',
+                        project: 'Local professionnel 200m²',
+                        category: 'construction',
+                        rating: 5,
+                        content: 'Partenaire de confiance pour nos projets professionnels. Depuis que DA SILVA est devenu SAS, leur approche des professionnels est parfaite. Respect des délais et des normes, équipe réactive.',
+                        date: 'Juillet 2024'
+                    }
+                ],
+                
+                get filteredAvis() {
+                    if (this.currentFilter === 'all') {
+                        return this.avis;
+                    }
+                    return this.avis.filter(avis => avis.category === this.currentFilter || avis.category === 'all');
+                },
+                
+                showAvis(avis) {
+                    return this.currentFilter === 'all' || avis.category === this.currentFilter || avis.category === 'all';
+                }
+            }
+        }
+        
+        function avisForm() {
+            return {
+                form: {
+                    nom: '',
+                    ville: '',
+                    projet: '',
+                    rating: 0,
+                    commentaire: ''
+                },
+                submitting: false,
+                
+                submitAvis() {
+                    if (!this.form.nom || !this.form.commentaire || !this.form.rating) {
+                        alert('Veuillez remplir tous les champs obligatoires');
+                        return;
+                    }
+                    
+                    this.submitting = true;
+                    
+                    // Simulate form submission
+                    setTimeout(() => {
+                        alert('Merci pour votre avis ! Il sera publié après validation.');
+                        this.resetForm();
+                        this.submitting = false;
+                    }, 2000);
+                },
+                
+                resetForm() {
+                    this.form = {
+                        nom: '',
+                        ville: '',
+                        projet: '',
+                        rating: 0,
+                        commentaire: ''
+                    };
+                }
+            }
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fournisseurs & Partenaires - DA SILVA CONSTRUCTION</title>
+    <meta name="description" content="Découvrez nos partenaires de confiance : Xella Thermopierre, Wienerberger, Alkern, Lafarge, Point P, Gedimat et bien d'autres. Matériaux de qualité pour vos projets.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        'construction': {
+                            50: '#fefbf3',
+                            100: '#fdf4e1',
+                            200: '#fae6c3',
+                            300: '#f6d299',
+                            400: '#f0b86d',
+                            500: '#ea9d4a',
+                            600: '#dc8332',
+                            700: '#b7672a',
+                            800: '#945229',
+                            900: '#794425',
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'fade-in-down': 'fadeInDown 0.8s ease-out',
+                        'scale-in': 'scaleIn 0.6s ease-out',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out',
+                        'slide-in-right': 'slideInRight 0.8s ease-out',
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.125);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-sans" x-data="{ 
+    mobileMenuOpen: false, 
+    scrolled: false,
+    loaded: false
+}" x-init="
+    loaded = true;
+    window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 });
+">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" 
+            :class="scrolled ? 'glass-effect shadow-xl' : 'bg-white'">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex items-center justify-between h-20">
+                <!-- Brand -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-12 bg-white rounded-xl flex items-center justify-center p-1 shadow-sm">
+                        <img src="assets/images/logo_da_silva_construction.jpeg" 
+                            alt="Logo DA SILVA CONSTRUCTION" 
+                            class="w-full h-full object-contain filter brightness-110 contrast-110">
+                    </div>
+                    <div>
+                        <h1 class="text-x2 font-bold text-gray-900" :class="scrolled ? 'text-gray-900' : 'text-black'">DA SILVA CONSTRUCTION</h1>
+                        <p class="text-sm text-gray-600" :class="scrolled ? 'text-black-600' : 'text-black-200'">Maçonnerie Générale</p>
+                    </div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">Accueil</a>
+                    <a href="prestations.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">Prestations</a>
+                    <a href="apropos.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">À Propos</a>
+                    <a href="fournisseurs.html" class="font-medium text-construction-600">Partenaires</a>
+                    <a href="avis.html" class="font-medium transition-colors hover:text-construction-600" 
+                       :class="scrolled ? 'text-gray-700' : 'text-black-200'">Avis</a>
+                    <a href="contact.html" class="bg-construction-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-construction-700 transition-colors">
+                        Contact
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button @click="mobileMenuOpen = !mobileMenuOpen" 
+                        class="lg:hidden p-2 rounded-lg" 
+                        :class="scrolled ? 'text-gray-900' : 'text-white'">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </nav>
+            
+            <!-- Mobile Menu -->
+            <div x-show="mobileMenuOpen" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 transform -translate-y-2"
+                 x-transition:enter-end="opacity-100 transform translate-y-0"
+                 class="lg:hidden bg-white rounded-xl shadow-xl mt-2 p-4 space-y-4">
+                <a href="index.html" class="block font-medium text-gray-700 hover:text-construction-600">Accueil</a>
+                <a href="prestations.html" class="block font-medium text-gray-700 hover:text-construction-600">Prestations</a>
+                <a href="apropos.html" class="block font-medium text-gray-700 hover:text-construction-600">À Propos</a>
+                <a href="fournisseurs.html" class="block font-medium text-construction-600">Partenaires</a>
+                <a href="avis.html" class="block font-medium text-gray-700 hover:text-construction-600">Avis</a>
+                <a href="contact.html" class="block bg-construction-600 text-white text-center py-3 rounded-lg font-semibold">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+                 alt="Fournisseurs matériaux construction" 
+                 class="w-full h-full object-cover">
+            <div class="hero-gradient absolute inset-0"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4"
+             x-show="loaded" 
+             x-transition:enter="transition ease-out duration-1000"
+             x-transition:enter-start="opacity-0 transform translate-y-10"
+             x-transition:enter-end="opacity-100 transform translate-y-0">
+            
+            <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+                Nos<br>
+                <span class="text-construction-400">Partenaires</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl mb-4 text-gray-200 font-light">
+                L'assurance de travaux de maçonnerie générale réussis
+            </p>
+            
+            <p class="text-lg md:text-xl mb-8 text-gray-300 max-w-2xl mx-auto">
+                Un réseau de <span class="font-semibold text-construction-300">fournisseurs de confiance</span><br>
+                pour des matériaux de qualité exceptionnelle.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#partenaires-principaux" 
+                   class="bg-construction-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-construction-700 transform hover:scale-105 transition-all duration-300 shadow-2xl">
+                    <i class="fas fa-handshake mr-2"></i>
+                    Nos Partenaires
+                </a>
+                <a href="#reseau-fournisseurs" 
+                   class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-gray-900 transform hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-network-wired mr-2"></i>
+                    Notre Réseau
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Des partenariats <span class="text-construction-600">durables</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                    DA SILVA CONSTRUCTION travaille exclusivement avec des fournisseurs reconnus pour leur expertise et la qualité de leurs matériaux. 
+                    Ces partenariats durables nous permettent de garantir l'excellence de nos réalisations et de proposer des solutions innovantes à nos clients.
+                </p>
+            </div>
+            
+            <div class="bg-construction-50 rounded-2xl p-8 border-l-4 border-construction-600 max-w-4xl mx-auto">
+                <p class="text-lg text-construction-800 font-medium italic text-center">
+                    "Le respect du DTU et de l'environnement sont au cœur de nos préoccupations. Nos équipes sont régulièrement formées pour performer dans la mise en œuvre des nouvelles techniques."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partenaires Principaux -->
+    <section id="partenaires-principaux" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Partenaires <span class="text-construction-600">Privilégiés</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Des leaders reconnus dans leurs domaines d'expertise
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Xella Thermopierre -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="h-48 bg-gradient-to-br from-construction-400 to-construction-600 relative overflow-hidden flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-white/20 backdrop-blur rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-building text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Xella Thermopierre</h3>
+                        </div>
+                        <div class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur rounded-lg flex items-center justify-center">
+                            <i class="fas fa-star text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-construction-600 font-semibold mb-3">Béton cellulaire & Isolation</p>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                            Partenaire officiel leader européen du béton cellulaire. Formation continue de nos équipes aux nouvelles techniques.
+                        </p>
+                        <ul class="space-y-1 mb-4 text-sm">
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Béton cellulaire haute performance
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Isolation thermique optimale
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-construction-600 mr-2 text-xs"></i>
+                                Formation continue équipes
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Wienerberger -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="h-48 bg-gradient-to-br from-red-500 to-red-600 relative overflow-hidden flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-white/20 backdrop-blur rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-bricks text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Wienerberger</h3>
+                        </div>
+                        <div class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur rounded-lg flex items-center justify-center">
+                            <i class="fas fa-star text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-red-600 font-semibold mb-3">Briques & Solutions Terre Cuite</p>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                            Premier fabricant mondial de briques en terre cuite, solutions durables et innovantes.
+                        </p>
+                        <ul class="space-y-1 mb-4 text-sm">
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-red-600 mr-2 text-xs"></i>
+                                Briques rouge traditionnelles
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-red-600 mr-2 text-xs"></i>
+                                Solutions isolation intégrée
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-red-600 mr-2 text-xs"></i>
+                                Durabilité et esthétique
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Lafarge -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-600 relative overflow-hidden flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-white/20 backdrop-blur rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-industry text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Lafarge</h3>
+                        </div>
+                        <div class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur rounded-lg flex items-center justify-center">
+                            <i class="fas fa-star text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-blue-600 font-semibold mb-3">Bétons & Ciments</p>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                            Leader mondial des matériaux de construction, solutions béton haute performance.
+                        </p>
+                        <ul class="space-y-1 mb-4 text-sm">
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-blue-600 mr-2 text-xs"></i>
+                                Bétons haute performance
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-blue-600 mr-2 text-xs"></i>
+                                Ciments techniques
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-blue-600 mr-2 text-xs"></i>
+                                Solutions durables
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Saint Gobain -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-purple-600 relative overflow-hidden flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-white/20 backdrop-blur rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-home text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Saint Gobain</h3>
+                        </div>
+                        <div class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur rounded-lg flex items-center justify-center">
+                            <i class="fas fa-star text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-purple-600 font-semibold mb-3">Solutions Habitat</p>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                            Conception, production et distribution de matériaux pour l'habitat et l'industrie.
+                        </p>
+                        <ul class="space-y-1 mb-4 text-sm">
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-purple-600 mr-2 text-xs"></i>
+                                Isolation performante
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-purple-600 mr-2 text-xs"></i>
+                                Plâtrerie et cloisons
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-purple-600 mr-2 text-xs"></i>
+                                Innovation continue
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Point P -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-green-600 relative overflow-hidden flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-white/20 backdrop-blur rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-store text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Point P</h3>
+                        </div>
+                        <div class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur rounded-lg flex items-center justify-center">
+                            <i class="fas fa-star text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-green-600 font-semibold mb-3">Négoce Matériaux</p>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                            Premier réseau français de distribution de matériaux de construction.
+                        </p>
+                        <ul class="space-y-1 mb-4 text-sm">
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-green-600 mr-2 text-xs"></i>
+                                Large gamme produits
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-green-600 mr-2 text-xs"></i>
+                                Conseil technique
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-green-600 mr-2 text-xs"></i>
+                                Proximité géographique
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Gedimat -->
+                <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="h-48 bg-gradient-to-br from-orange-500 to-orange-600 relative overflow-hidden flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-white/20 backdrop-blur rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-warehouse text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Gedimat</h3>
+                        </div>
+                        <div class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur rounded-lg flex items-center justify-center">
+                            <i class="fas fa-star text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-orange-600 font-semibold mb-3">Distribution Pro</p>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                            Réseau de négociants indépendants spécialisés dans la construction.
+                        </p>
+                        <ul class="space-y-1 mb-4 text-sm">
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-orange-600 mr-2 text-xs"></i>
+                                Conseil d'expert
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-orange-600 mr-2 text-xs"></i>
+                                Solutions sur mesure
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check text-orange-600 mr-2 text-xs"></i>
+                                Service de proximité
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Réseau de Fournisseurs -->
+    <section id="reseau-fournisseurs" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Notre <span class="text-construction-600">Réseau</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Un écosystème complet de fournisseurs spécialisés pour tous vos besoins de construction
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                <!-- Partenaires réseau -->
+                <div class="bg-construction-50 rounded-xl p-6 text-center hover:bg-construction-100 transition-colors duration-300 group" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <i class="fas fa-paint-roller text-2xl text-construction-600 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                    <h3 class="font-bold text-gray-900 text-sm">DÉCOCÉRAM</h3>
+                    <p class="text-xs text-gray-600 mt-1">Carrelage & Revêtements</p>
+                </div>
+                
+                <div class="bg-construction-50 rounded-xl p-6 text-center hover:bg-construction-100 transition-colors duration-300 group" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <i class="fas fa-tools text-2xl text-construction-600 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                    <h3 class="font-bold text-gray-900 text-sm">DISPANO</h3>
+                    <p class="text-xs text-gray-600 mt-1">Outillage Professionnel</p>
+                </div>
+                
+                <div class="bg-construction-50 rounded-xl p-6 text-center hover:bg-construction-100 transition-colors duration-300 group" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <i class="fas fa-truck text-2xl text-construction-600 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                    <h3 class="font-bold text-gray-900 text-sm">LOXAM</h3>
+                    <p class="text-xs text-gray-600 mt-1">Location Matériel</p>
+                </div>
+                
+                <div class="bg-construction-50 rounded-xl p-6 text-center hover:bg-construction-100 transition-colors duration-300 group" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <i class="fas fa-hammer text-2xl text-construction-600 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                    <h3 class="font-bold text-gray-900 text-sm">MILLET</h3>
+                    <p class="text-xs text-gray-600 mt-1">Quincaillerie Pro</p>
+                </div>
+                
+                <div class="bg-construction-50 rounded-xl p-6 text-center hover:bg-construction-100 transition-colors duration-300 group" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <i class="fas fa-palette text-2xl text-construction-600 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                    <h3 class="font-bold text-gray-900 text-sm">PAREXLANKO</h3>
+                    <p class="text-xs text-gray-600 mt-1">Mortiers & Enduits</p>
+                </div>
+                
+                <div class="bg-construction-50 rounded-xl p-6 text-center hover:bg-construction-100 transition-colors duration-300 group" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <i class="fas fa-recycle text-2xl text-construction-600 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                    <h3 class="font-bold text-gray-900 text-sm">PUM PLASTIQUES</h3>
+                    <p class="text-xs text-gray-600 mt-1">Solutions Plastiques</p>
+                </div>
+                
+                <div class="bg-construction-50 rounded-xl p-6 text-center hover:bg-construction-100 transition-colors duration-300 group" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <i class="fas fa-layer-group text-2xl text-construction-600 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                    <h3 class="font-bold text-gray-900 text-sm">PLACO</h3>
+                    <p class="text-xs text-gray-600 mt-1">Plâtrerie & Cloisons</p>
+                </div>
+                
+                <div class="bg-construction-50 rounded-xl p-6 text-center hover:bg-construction-100 transition-colors duration-300 group" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <i class="fas fa-cube text-2xl text-construction-600 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                    <h3 class="font-bold text-gray-900 text-sm">YTONG</h3>
+                    <p class="text-xs text-gray-600 mt-1">Béton Cellulaire</p>
+                </div>
+                
+                <div class="bg-construction-50 rounded-xl p-6 text-center hover:bg-construction-100 transition-colors duration-300 group" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <i class="fas fa-boxes text-2xl text-construction-600 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                    <h3 class="font-bold text-gray-900 text-sm">ALKERN</h3>
+                    <p class="text-xs text-gray-600 mt-1">Blocs Béton Isolants</p>
+                </div>
+                
+                <div class="bg-construction-50 rounded-xl p-6 text-center hover:bg-construction-100 transition-colors duration-300 group" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <i class="fas fa-truck-loading text-2xl text-construction-600 mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                    <h3 class="font-bold text-gray-900 text-sm">BÉTON BML</h3>
+                    <p class="text-xs text-gray-600 mt-1">Béton Prêt à l'Emploi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Certifications & <span class="text-construction-600">Labels</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Notre engagement qualité reconnu par les organismes professionnels
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- RGE Qualibat -->
+                <div class="bg-white rounded-2xl shadow-xl p-8 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-20 h-20 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-award text-3xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">RGE Qualibat</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Reconnu Garant de l'Environnement pour nos prestations éco-responsables et performantes énergétiquement.
+                    </p>
+                </div>
+
+                <!-- Assurance Décennale -->
+                <div class="bg-white rounded-2xl shadow-xl p-8 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-3xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Assurance Décennale</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Garantie complète sur tous nos travaux de gros œuvre pour votre tranquillité d'esprit.
+                    </p>
+                </div>
+
+                <!-- Formation Continue -->
+                <div class="bg-white rounded-2xl shadow-xl p-8 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 md:col-span-2 lg:col-span-1" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-20 h-20 bg-construction-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-graduation-cap text-3xl text-construction-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Formation Continue</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Nos équipes formées régulièrement aux dernières techniques par nos partenaires fabricants.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processus de Sélection -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Notre processus de <span class="text-construction-600">sélection</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Garantir la qualité à chaque étape de votre projet
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center group" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-16 h-16 bg-construction-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 font-bold text-xl group-hover:bg-construction-700 transition-colors duration-300">
+                        1
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Analyse Projet</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Étude des besoins spécifiques et contraintes techniques de votre projet.
+                    </p>
+                </div>
+                
+                <div class="text-center group" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-16 h-16 bg-construction-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 font-bold text-xl group-hover:bg-construction-700 transition-colors duration-300">
+                        2
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Sélection Matériaux</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Choix des matériaux optimaux selon nos partenaires de confiance.
+                    </p>
+                </div>
+                
+                <div class="text-center group" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-16 h-16 bg-construction-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 font-bold text-xl group-hover:bg-construction-700 transition-colors duration-300">
+                        3
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Validation Technique</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Vérification conformité DTU et des performances attendues.
+                    </p>
+                </div>
+                
+                <div class="text-center group" x-intersect="$el.classList.add('animate-fade-in-up')">
+                    <div class="w-16 h-16 bg-construction-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 font-bold text-xl group-hover:bg-construction-700 transition-colors duration-300">
+                        4
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Mise en Œuvre</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Application des techniques optimales par nos équipes formées.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-construction-600 to-construction-800 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="relative max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl md:text-5xl font-black text-white mb-6">
+                Un projet en <span class="text-construction-200">vue</span> ?
+            </h2>
+            <p class="text-xl text-construction-100 mb-8 max-w-2xl mx-auto">
+                Nos experts vous conseillent sur le choix des meilleurs matériaux pour votre projet. 
+                Bénéficiez de notre réseau de partenaires de confiance.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html" 
+                   class="bg-white text-construction-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-xl">
+                    <i class="fas fa-comments mr-2"></i>
+                    Demander Conseil
+                </a>
+                <a href="prestations.html" 
+                   class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-construction-700 transform hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-tools mr-2"></i>
+                    Nos Prestations
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-construction-600 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-hard-hat text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">DA SILVA CONSTRUCTION</h3>
+                            <p class="text-gray-400">Maçonnerie Générale</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Un réseau de partenaires de confiance depuis 1998 pour des matériaux de qualité 
+                        et des solutions techniques innovantes.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-construction-600 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-construction-600 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-construction-600 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Partenaires -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Partenaires Clés</h4>
+                    <ul class="space-y-3">
+                        <li class="text-gray-300">Xella Thermopierre</li>
+                        <li class="text-gray-300">Wienerberger</li>
+                        <li class="text-gray-300">Lafarge</li>
+                        <li class="text-gray-300">Saint Gobain</li>
+                        <li class="text-gray-300">Point P & Gedimat</li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Contact</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-map-marker-alt text-construction-400"></i>
+                            <span class="text-gray-300">Près de Bourgoin-Jallieu (38300)</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-construction-400"></i>
+                            <a href="tel:0474XXXXXX" class="text-gray-300 hover:text-construction-400 transition-colors">04 74 XX XX XX</a>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-construction-400"></i>
+                            <a href="contact.html" class="text-gray-300 hover:text-construction-400 transition-colors">Devis gratuit</a>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-clock text-construction-400"></i>
+                            <span class="text-gray-300">Lun-Ven: 8h-18h</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom Footer -->
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">
+                    &copy; 2025 DA SILVA CONSTRUCTION - Tous droits réservés
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
