@@ -343,7 +343,7 @@
     </section>
 
     <!-- Formulaire -->
-    <section id="formulaire" class="py-20 bg-gray-50" x-data="contactForm()">
+    <section id="formulaire" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
@@ -361,125 +361,130 @@
                         Votre Projet en Détail
                     </h3>
                     
-                    <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <div>
-                            <label class="block text-gray-700 font-semibold mb-2">Prénom *</label>
-                            <input type="text" x-model="form.prenom" required
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-semibold mb-2">Nom *</label>
-                            <input type="text" x-model="form.nom" required
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
-                        </div>
-                    </div>
-                    
-                    <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <div>
-                            <label class="block text-gray-700 font-semibold mb-2">Email *</label>
-                            <input type="email" x-model="form.email" required
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-semibold mb-2">Téléphone</label>
-                            <input type="tel" x-model="form.telephone"
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
-                        </div>
-                    </div>
-                    
-                    <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <div>
-                            <label class="block text-gray-700 font-semibold mb-2">Ville *</label>
-                            <input type="text" x-model="form.ville" placeholder="ex: Bourgoin-Jallieu" required
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-semibold mb-2">Code postal</label>
-                            <input type="text" x-model="form.codepostal" placeholder="38300"
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
-                        </div>
-                    </div>
-                    
-                    <div class="mb-6">
-                        <label class="block text-gray-700 font-semibold mb-2">Type de projet *</label>
-                        <select x-model="form.typeprojet" required
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
-                            <option value="">Sélectionnez votre projet...</option>
-                            <option value="construction-maison">Construction maison individuelle</option>
-                            <option value="construction-collectif">Construction logement collectif</option>
-                            <option value="extension">Extension / Surélévation</option>
-                            <option value="renovation-ancienne">Rénovation bâtiment ancien</option>
-                            <option value="renovation-moderne">Rénovation moderne</option>
-                            <option value="ouvertures">Création d'ouvertures</option>
-                            <option value="piscine">Construction piscine</option>
-                            <option value="amenagement">Aménagement extérieur</option>
-                            <option value="local-pro">Local professionnel</option>
-                            <option value="autre">Autre</option>
-                        </select>
-                    </div>
-                    
-                    <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <div>
-                            <label class="block text-gray-700 font-semibold mb-2">Surface approximative</label>
-                            <input type="text" x-model="form.surface" placeholder="ex: 150m², 30m² d'extension..."
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-semibold mb-2">Budget envisagé</label>
-                            <select x-model="form.budget"
+                    <form action="https://api.web3forms.com/submit" method="POST" id="devis-form">
+                        <!-- Configuration Web3Forms -->
+                        <input type="hidden" name="access_key" value="cca10915-c26f-435f-b702-448f4c1571ea">
+                        <input type="hidden" name="subject" value="💼 Nouvelle Demande de Devis - DA SILVA CONSTRUCTION">
+                        <input type="hidden" name="from_name" value="Site Web DA SILVA CONSTRUCTION">
+                        <input type="hidden" name="redirect" value="https://votre-site-netlify.netlify.app/merci-devis.html">
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Prénom *</label>
+                                <input type="text" name="prenom" required
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
-                                <option value="">Sélectionnez...</option>
-                                <option value="moins-50k">Moins de 50 000€</option>
-                                <option value="50k-100k">50 000€ - 100 000€</option>
-                                <option value="100k-200k">100 000€ - 200 000€</option>
-                                <option value="200k-plus">Plus de 200 000€</option>
-                                <option value="non-defini">Non défini</option>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Nom *</label>
+                                <input type="text" name="nom" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Email *</label>
+                                <input type="email" name="email" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Téléphone</label>
+                                <input type="tel" name="telephone"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Ville *</label>
+                                <input type="text" name="ville" placeholder="ex: Bourgoin-Jallieu" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Code postal</label>
+                                <input type="text" name="code_postal" placeholder="38300"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-semibold mb-2">Type de projet *</label>
+                            <select name="type_projet" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                                <option value="">Sélectionnez votre projet...</option>
+                                <option value="Construction maison individuelle">Construction maison individuelle</option>
+                                <option value="Construction logement collectif">Construction logement collectif</option>
+                                <option value="Extension / Surélévation">Extension / Surélévation</option>
+                                <option value="Rénovation bâtiment ancien">Rénovation bâtiment ancien</option>
+                                <option value="Rénovation moderne">Rénovation moderne</option>
+                                <option value="Création d'ouvertures">Création d'ouvertures</option>
+                                <option value="Construction piscine">Construction piscine</option>
+                                <option value="Aménagement extérieur">Aménagement extérieur</option>
+                                <option value="Local professionnel">Local professionnel</option>
+                                <option value="Autre">Autre</option>
                             </select>
                         </div>
-                    </div>
-                    
-                    <div class="mb-6">
-                        <label class="block text-gray-700 font-semibold mb-2">Délai souhaité</label>
-                        <select x-model="form.delai"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
-                            <option value="">Sélectionnez...</option>
-                            <option value="urgent">Urgent (moins de 1 mois)</option>
-                            <option value="3-mois">Dans les 3 mois</option>
-                            <option value="6-mois">Dans les 6 mois</option>
-                            <option value="1-an">Dans l'année</option>
-                            <option value="plus-tard">Plus tard</option>
-                        </select>
-                    </div>
-                    
-                    <div class="mb-6">
-                        <label class="block text-gray-700 font-semibold mb-2">Description de votre projet *</label>
-                        <textarea x-model="form.description" rows="5" required
-                                  placeholder="Décrivez votre projet en détail : type de construction, matériaux souhaités, contraintes particulières..."
-                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300 resize-none"></textarea>
-                    </div>
-                    
-                    <div class="space-y-3 mb-8">
-                        <label class="flex items-center">
-                            <input type="checkbox" x-model="form.visite" class="w-5 h-5 text-construction-600 border-gray-300 rounded focus:ring-construction-500">
-                            <span class="ml-3 text-gray-700">Je souhaite une visite sur site pour une estimation précise</span>
-                        </label>
-                        <label class="flex items-center">
-                            <input type="checkbox" x-model="form.newsletter" class="w-5 h-5 text-construction-600 border-gray-300 rounded focus:ring-construction-500">
-                            <span class="ml-3 text-gray-700">Je souhaite recevoir des informations sur vos actualités</span>
-                        </label>
-                    </div>
-                    
-                    <button @click="submitForm()" :disabled="submitting"
-                            class="w-full bg-construction-600 text-white py-4 px-8 rounded-lg font-bold text-lg hover:bg-construction-700 transform hover:scale-105 transition-all duration-300 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed">
-                        <span x-show="!submitting">
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Surface approximative</label>
+                                <input type="text" name="surface" placeholder="ex: 150m², 30m² d'extension..."
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Budget envisagé</label>
+                                <select name="budget"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                                    <option value="">Sélectionnez...</option>
+                                    <option value="Moins de 50 000€">Moins de 50 000€</option>
+                                    <option value="50 000€ - 100 000€">50 000€ - 100 000€</option>
+                                    <option value="100 000€ - 200 000€">100 000€ - 200 000€</option>
+                                    <option value="Plus de 200 000€">Plus de 200 000€</option>
+                                    <option value="Non défini">Non défini</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-semibold mb-2">Délai souhaité</label>
+                            <select name="delai"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                                <option value="">Sélectionnez...</option>
+                                <option value="Urgent (moins de 1 mois)">Urgent (moins de 1 mois)</option>
+                                <option value="Dans les 3 mois">Dans les 3 mois</option>
+                                <option value="Dans les 6 mois">Dans les 6 mois</option>
+                                <option value="Dans l'année">Dans l'année</option>
+                                <option value="Plus tard">Plus tard</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-semibold mb-2">Description de votre projet *</label>
+                            <textarea name="description" rows="5" required
+                                    placeholder="Décrivez votre projet en détail : type de construction, matériaux souhaités, contraintes particulières..."
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300 resize-none"></textarea>
+                        </div>
+                        
+                        <div class="space-y-3 mb-8">
+                            <label class="flex items-center">
+                                <input type="checkbox" name="visite_souhaitee" value="Oui" class="w-5 h-5 text-construction-600 border-gray-300 rounded focus:ring-construction-500">
+                                <span class="ml-3 text-gray-700">Je souhaite une visite sur site pour une estimation précise</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="newsletter" value="Oui" class="w-5 h-5 text-construction-600 border-gray-300 rounded focus:ring-construction-500">
+                                <span class="ml-3 text-gray-700">Je souhaite recevoir des informations sur vos actualités</span>
+                            </label>
+                        </div>
+                        
+                        <!-- Champ caché pour la date -->
+                        <input type="hidden" name="date_demande" id="date-demande">
+                        
+                        <button type="submit" id="submit-devis-btn"
+                                class="w-full bg-construction-600 text-white py-4 px-8 rounded-lg font-bold text-lg hover:bg-construction-700 transform hover:scale-105 transition-all duration-300 shadow-xl">
                             <i class="fas fa-paper-plane mr-2"></i>
                             Envoyer ma demande de devis
-                        </span>
-                        <span x-show="submitting">
-                            <i class="fas fa-spinner fa-spin mr-2"></i>
-                            Envoi en cours...
-                        </span>
-                    </button>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -731,6 +736,20 @@
         // Observe all sections
         document.querySelectorAll('section').forEach(section => {
             observer.observe(section);
+        });
+        document.getElementById('date-demande').value = new Date().toLocaleDateString('fr-FR', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+
+        document.getElementById('devis-form').addEventListener('submit', function(e) {
+            const submitBtn = document.getElementById('submit-devis-btn');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Envoi en cours...';
+            submitBtn.disabled = true;
         });
     </script>
 </body>

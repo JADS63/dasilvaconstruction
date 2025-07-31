@@ -18,6 +18,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    
     <script>
         tailwind.config = {
             theme: {
@@ -267,44 +268,91 @@
     </section>
 
     <!-- Avis Clients -->
-    <section id="avis" class="py-20 bg-gray-50" x-data="avisData()">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <template x-for="avis in filteredAvis" :key="avis.id">
-                    <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2" x-intersect="$el.classList.add('animate-fade-in-up')" x-show="showAvis(avis)" x-transition>
-                        <div class="p-8">
-                            <!-- Header avec avatar et infos client -->
-                            <div class="flex items-center mb-6">
-                                <div class="w-16 h-16 bg-gradient-to-br from-construction-400 to-construction-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4" x-text="avis.initials"></div>
-                                <div class="flex-1">
-                                    <h3 class="text-lg font-bold text-gray-900" x-text="avis.name"></h3>
-                                    <p class="text-gray-600 text-sm" x-text="avis.location"></p>
-                                    <p class="text-construction-600 font-semibold text-sm" x-text="avis.project"></p>
-                                </div>
-                            </div>
-                            
-                            <!-- Rating -->
-                            <div class="flex mb-4">
-                                <template x-for="i in 5">
-                                    <i class="fas fa-star text-yellow-400 mr-1" x-show="i <= avis.rating"></i>
-                                </template>
-                                <template x-for="i in 5">
-                                    <i class="far fa-star text-gray-300 mr-1" x-show="i > avis.rating"></i>
-                                </template>
-                            </div>
-                            
-                            <!-- Contenu de l'avis -->
-                            <div class="mb-6">
-                                <p class="text-gray-700 leading-relaxed italic" x-text="avis.content"></p>
-                            </div>
-                            
-                            <!-- Date -->
-                            <div class="text-right">
-                                <span class="text-gray-500 text-sm" x-text="avis.date"></span>
-                            </div>
+    <section id="laisser-avis" class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Laissez votre <span class="text-construction-600">Avis</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Votre expérience nous intéresse ! Partagez votre avis pour aider d'autres clients et nous améliorer.
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                <form action="https://api.web3forms.com/submit" method="POST" id="avis-form">
+                    <!-- Clé d'accès Web3Forms -->
+                    <input type="hidden" name="access_key" value="cca10915-c26f-435f-b702-448f4c1571ea">
+                    
+                    <!-- Configuration email -->
+                    <input type="hidden" name="subject" value="🌟 Nouvel Avis Client - DA SILVA CONSTRUCTION">
+                    <input type="hidden" name="from_name" value="Site Web DA SILVA CONSTRUCTION">
+                    
+                    <!-- Redirection après soumission -->
+                    <input type="hidden" name="redirect" value="https://votre-site-netlify.netlify.app/merci.html">
+                    
+                    <!-- Champs cachés pour un email bien formaté -->
+                    <input type="hidden" name="template" value="custom">
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Nom *</label>
+                            <input type="text" name="nom" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Ville</label>
+                            <input type="text" name="ville" placeholder="ex: Bourgoin-Jallieu"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
                         </div>
                     </div>
-                </template>
+                    
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-semibold mb-2">Type de projet</label>
+                        <select name="projet"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                            <option value="">Sélectionnez...</option>
+                            <option value="Construction neuve">Construction neuve</option>
+                            <option value="Rénovation">Rénovation</option>
+                            <option value="Extension">Extension</option>
+                            <option value="Piscine">Piscine</option>
+                            <option value="Aménagement extérieur">Aménagement extérieur</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-semibold mb-3">Note *</label>
+                        <select name="rating" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300">
+                            <option value="">Choisissez une note</option>
+                            <option value="⭐⭐⭐⭐⭐ (5/5)">⭐⭐⭐⭐⭐ (5/5)</option>
+                            <option value="⭐⭐⭐⭐ (4/5)">⭐⭐⭐⭐ (4/5)</option>
+                            <option value="⭐⭐⭐ (3/5)">⭐⭐⭐ (3/5)</option>
+                            <option value="⭐⭐ (2/5)">⭐⭐ (2/5)</option>
+                            <option value="⭐ (1/5)">⭐ (1/5)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <label class="block text-gray-700 font-semibold mb-2">Votre avis *</label>
+                        <textarea name="commentaire" rows="5" required
+                                placeholder="Partagez votre expérience avec DA SILVA CONSTRUCTION..."
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-construction-500 focus:border-transparent transition-all duration-300 resize-none"></textarea>
+                    </div>
+                    
+                    <!-- Champ caché pour la date -->
+                    <input type="hidden" name="date_soumission" id="date-soumission">
+                    
+                    <div class="text-center">
+                        <button type="submit" id="submit-btn"
+                                class="bg-construction-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-construction-700 transform hover:scale-105 transition-all duration-300 shadow-xl">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Publier mon avis
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -647,6 +695,21 @@
         // Observe all sections
         document.querySelectorAll('section').forEach(section => {
             observer.observe(section);
+        });
+        document.getElementById('date-soumission').value = new Date().toLocaleDateString('fr-FR', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+
+        // Animation du bouton lors de la soumission
+        document.getElementById('avis-form').addEventListener('submit', function(e) {
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Envoi en cours...';
+            submitBtn.disabled = true;
         });
     </script>
 </body>
