@@ -2,7 +2,7 @@
 
 Site web moderne et responsive pour l'entreprise familiale de maçonnerie DA SILVA CONSTRUCTION basée près de Bourgoin-Jallieu.
 
-## 🏗️ Structure du Projet
+## Structure du Projet
 
 ```
 dasilva-construction/
@@ -29,7 +29,7 @@ dasilva-construction/
 └── README.md                 # Ce fichier
 ```
 
-## 🚀 Technologies Utilisées
+##  Technologies Utilisées
 
 - **HTML5** : Structure sémantique
 - **CSS3** : Styles modernes avec variables CSS
@@ -37,7 +37,7 @@ dasilva-construction/
 - **Intersection Observer API** : Animations au scroll
 - **CSS Grid & Flexbox** : Layout responsive
 
-## ⚡ Fonctionnalités
+##  Fonctionnalités
 
 ### Navigation
 - Menu responsive avec hamburger sur mobile
@@ -62,14 +62,14 @@ dasilva-construction/
 - Simulation d'envoi avec feedback utilisateur
 - Champs adaptés au secteur de la maçonnerie
 
-## 📱 Responsive Design
+##  Responsive Design
 
 Le site s'adapte automatiquement à tous les écrans :
 - **Desktop** : Layout en grille avec sidebar
 - **Tablet** : Adaptation du menu et des colonnes
 - **Mobile** : Menu hamburger, layout vertical
 
-## 🎨 Charte Graphique
+##  Charte Graphique
 
 ### Couleurs
 ```css
@@ -86,7 +86,7 @@ Le site s'adapte automatiquement à tous les écrans :
 - Hiérarchie claire des titres
 - Lisibilité optimisée sur tous supports
 
-## 📊 Contenu Authentique
+##  Contenu Authentique
 
 Le site reprend fidèlement les informations du site officiel :
 
