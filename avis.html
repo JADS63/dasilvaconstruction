@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avis Clients - DA SILVA CONSTRUCTION | Témoignages</title>
-    <meta name="description" content="Découvrez les avis et témoignages de nos clients satisfaits. 40 ans d'expérience en maçonnerie dans le Nord Isère et Grand Lyon. Note moyenne 4.8/5.">
+    <meta name="description" content="Découvrez les avis et témoignages de nos clients satisfaits. 40 ans d'expérience en maçonnerie dans le Nord Isère et Grand Lyon. Note moyenne 5/5.">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -114,10 +114,9 @@
             }, 16);
         };
         
-        animateCounter(0, 98, 2000, 'satisfaction');
-        animateCounter(0, 4.8, 2000, 'rating');
-        animateCounter(0, 200, 2500, 'projects');
-        animateCounter(0, 40, 2000, 'years');
+        animateCounter(0, 100, 1000, 'satisfaction');
+        animateCounter(0, 5, 1000, 'rating');
+        animateCounter(0, 150, 1000, 'projects');
     }, 1000);
 ">
 
@@ -224,7 +223,7 @@
     <!-- Stats Section -->
     <section class="py-20 bg-construction-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
                 <div class="text-center group">
                     <div class="bg-white rounded-2xl p-8 group-hover:bg-construction-100 transition-colors shadow-lg">
                         <div class="text-4xl md:text-5xl font-black text-construction-600 mb-2" x-text="counters.satisfaction + '%'"></div>
@@ -237,7 +236,7 @@
                     <div class="bg-white rounded-2xl p-8 group-hover:bg-construction-100 transition-colors shadow-lg">
                         <div class="text-4xl md:text-5xl font-black text-construction-600 mb-2" x-text="counters.rating + '/5'"></div>
                         <p class="text-gray-600 font-medium text-lg">Note Moyenne</p>
-                        <p class="text-gray-500 text-sm mt-1">Sur Google</p>
+                        <p class="text-gray-500 text-sm mt-1">Toutes plateformes</p>
                     </div>
                 </div>
                 
@@ -246,14 +245,6 @@
                         <div class="text-4xl md:text-5xl font-black text-construction-600 mb-2" x-text="counters.projects + '+'"></div>
                         <p class="text-gray-600 font-medium text-lg">Projets Réalisés</p>
                         <p class="text-gray-500 text-sm mt-1">Depuis 1998</p>
-                    </div>
-                </div>
-                
-                <div class="text-center group">
-                    <div class="bg-white rounded-2xl p-8 group-hover:bg-construction-100 transition-colors shadow-lg">
-                        <div class="text-4xl md:text-5xl font-black text-construction-600 mb-2" x-text="counters.years"></div>
-                        <p class="text-gray-600 font-medium text-lg">Années</p>
-                        <p class="text-gray-500 text-sm mt-1">D'expérience</p>
                     </div>
                 </div>
             </div>
@@ -265,35 +256,13 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
-                    Témoignages par <span class="text-construction-600">Catégorie</span>
-                </h2>
+                    Témoignages                  </h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                     Particuliers et professionnels nous font confiance pour tous types de projets
                 </p>
             </div>
             
-            <div class="flex flex-wrap justify-center gap-4 mb-8">
-                <button @click="currentFilter = 'all'" 
-                        :class="currentFilter === 'all' ? 'bg-construction-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'"
-                        class="px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
-                    Tous les avis
-                </button>
-                <button @click="currentFilter = 'construction'" 
-                        :class="currentFilter === 'construction' ? 'bg-construction-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'"
-                        class="px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
-                    Constructions
-                </button>
-                <button @click="currentFilter = 'renovation'" 
-                        :class="currentFilter === 'renovation' ? 'bg-construction-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'"
-                        class="px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
-                    Rénovations
-                </button>
-                <button @click="currentFilter = 'extension'" 
-                        :class="currentFilter === 'extension' ? 'bg-construction-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'"
-                        class="px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
-                    Extensions
-                </button>
-            </div>
+        
         </div>
     </section>
 
@@ -326,7 +295,7 @@
                             
                             <!-- Contenu de l'avis -->
                             <div class="mb-6">
-                                <p class="text-gray-700 leading-relaxed italic" x-text="'"' + avis.content + '"'"></p>
+                                <p class="text-gray-700 leading-relaxed italic" x-text="avis.content"></p>
                             </div>
                             
                             <!-- Date -->
@@ -354,7 +323,7 @@
                 <div class="flex items-center justify-center mb-6">
                     <i class="fab fa-google text-4xl text-blue-500 mr-4"></i>
                     <div class="text-left">
-                        <div class="text-3xl font-bold text-gray-900">4.8/5</div>
+                        <div class="text-3xl font-bold text-gray-900">5.0/5</div>
                         <div class="flex mb-2">
                             <i class="fas fa-star text-yellow-400 mr-1"></i>
                             <i class="fas fa-star text-yellow-400 mr-1"></i>
@@ -362,7 +331,7 @@
                             <i class="fas fa-star text-yellow-400 mr-1"></i>
                             <i class="fas fa-star text-yellow-400 mr-1"></i>
                         </div>
-                        <p class="text-gray-600">Basé sur 6 avis Google</p>
+                        <p class="text-gray-600">Basé sur les avis Google</p>
                     </div>
                 </div>
                 
@@ -474,17 +443,6 @@
                         Entreprise familiale de maçonnerie générale depuis 1998. 
                         Savoir-faire traditionnel et techniques modernes au service de vos projets.
                     </p>
-                    <!-- <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-construction-600 transition-colors">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-construction-600 transition-colors">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-construction-600 transition-colors">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div> -->
                 </div>
                 
                 <!-- Navigation -->
@@ -538,81 +496,83 @@
                 avis: [
                     {
                         id: 1,
-                        name: 'Client PagesJaunes',
-                        initials: 'CP',
-                        location: 'Nord Isère',
-                        project: 'Plusieurs chantiers',
-                        category: 'all',
+                        name: 'Vedad Porobic',
+                        initials: 'VP',
+                        location: 'Google Maps',
+                        project: 'Travaux de maçonnerie',
+                        category: 'construction',
                         rating: 5,
-                        content: 'Nous avons confié plusieurs chantiers à l\'entreprise Da Silva. Nous avons toujours été satisfait de leurs conseils avisés, de leur professionnalisme et de la qualité des réalisations. Je conseille sincèrement l\'entreprise Da silva à toute personne recherchant un maçon sérieux et de confiance.',
-                        date: 'Décembre 2024'
+                        content: 'Entreprise au top très professionnelle, ses ouvriers ont fait un travail remarquable chez moi je les recommande. Merci encore à Marco et ses ouvriers !',
+                        date: 'Mai 2024'
                     },
                     {
                         id: 2,
-                        name: 'Famille Martin',
-                        initials: 'FM',
-                        location: 'Bourgoin-Jallieu',
-                        project: 'Construction maison 140m²',
+                        name: 'Christophe Sage',
+                        initials: 'CS',
+                        location: 'Google Maps',
+                        project: 'Construction neuve',
                         category: 'construction',
                         rating: 5,
-                        content: 'Excellent travail de Marco et son équipe ! Notre maison a été construite dans les délais avec des finitions parfaites. L\'utilisation du béton cellulaire Xella nous garantit une excellente isolation. Nous recommandons vivement !',
-                        date: 'Novembre 2024'
+                        content: 'Nous n\'avons pas de mots... merci beaucoup !! Une entreprise comme il n\'y en a plus beaucoup.',
+                        date: 'Avril 2024'
                     },
                     {
                         id: 3,
-                        name: 'Jean-Luc D.',
-                        initials: 'JD',
-                        location: 'La Tour-du-Pin',
-                        project: 'Rénovation maison ancienne',
-                        category: 'renovation',
+                        name: 'Quentin BP',
+                        initials: 'QB',
+                        location: 'Google Maps',
+                        project: 'Projet professionnel',
+                        category: 'construction',
                         rating: 5,
-                        content: 'DA SILVA CONSTRUCTION a su redonner vie à notre maison de 1890. Ils ont respecté les techniques traditionnelles tout en apportant la modernité nécessaire. Travail remarquable sur la création d\'ouvertures.',
-                        date: 'Octobre 2024'
+                        content: 'Entreprise sérieuse, réactive et adaptable. Leur positionnement est compétitif et les travaux réalisés sont très qualitatifs. Vous pouvez vous reposer sur leur professionnalisme et avancer en toute confiance avec les différents interlocuteurs. À recommander.',
+                        date: 'Septembre 2021'
                     },
                     {
                         id: 4,
-                        name: 'Sandrine L.',
-                        initials: 'SL',
-                        location: 'Villefontaine',
-                        project: 'Extension 45m²',
-                        category: 'extension',
+                        name: 'Mathieu Dubois',
+                        initials: 'MD',
+                        location: 'Google Maps',
+                        project: 'Rénovation complète',
+                        category: 'renovation',
                         rating: 5,
-                        content: 'Extension parfaitement intégrée à notre maison existante. L\'équipe est très professionnelle, à l\'écoute et respecte les délais. La qualité des matériaux et des finitions est exemplaire.',
-                        date: 'Septembre 2024'
+                        content: 'Merci pour vos conseil et votre professionnalisme ! La Qualité est vraiment au rendez-vous ! Merci à vos salariés pour leur travail soigné. Une vraie équipe de pro ! Je recommanderai votre entreprise sans problème !',
+                        date: 'Décembre 2022'
                     },
                     {
                         id: 5,
-                        name: 'Philippe R.',
-                        initials: 'PR',
-                        location: 'Bourgoin-Jallieu',
-                        project: 'Piscine 8x4m + terrasse',
+                        name: 'Claude N.',
+                        initials: 'CN',
+                        location: 'Google Maps',
+                        project: 'Construction maison',
                         category: 'construction',
                         rating: 5,
-                        content: 'Réalisation impeccable de notre piscine avec local technique intégré. Les aménagements périphériques en béton désactivé sont magnifiques. Merci à toute l\'équipe pour leur professionnalisme !',
-                        date: 'Août 2024'
+                        content: 'Communication réactivité sont synonymes de mon expérience avec cette entreprise. Prestation de haute qualité !!!',
+                        date: 'Il y a 6 ans'
                     },
                     {
                         id: 6,
-                        name: 'Entreprise Lyon-Nord',
-                        initials: 'EL',
-                        location: 'Lyon 6ème',
-                        project: 'Local professionnel 200m²',
-                        category: 'construction',
+                        name: 'Rémi Correia',
+                        initials: 'RC',
+                        location: 'Google Maps',
+                        project: 'Travaux de rénovation',
+                        category: 'renovation',
                         rating: 5,
-                        content: 'Partenaire de confiance pour nos projets professionnels. Depuis que DA SILVA est devenu SAS, leur approche des professionnels est parfaite. Respect des délais et des normes, équipe réactive.',
-                        date: 'Juillet 2024'
+                        content: 'Excellent travail réalisé par l\'équipe DA Silva Construction. Professionnalisme et qualité au rendez-vous.',
+                        date: 'Mars 2022'
                     }
                 ],
                 
                 get filteredAvis() {
-                    if (this.currentFilter === 'all') {
+                    const filter = this.$root.currentFilter || 'all';
+                    if (filter === 'all') {
                         return this.avis;
                     }
-                    return this.avis.filter(avis => avis.category === this.currentFilter || avis.category === 'all');
+                    return this.avis.filter(avis => avis.category === filter);
                 },
                 
                 showAvis(avis) {
-                    return this.currentFilter === 'all' || avis.category === this.currentFilter || avis.category === 'all';
+                    const filter = this.$root.currentFilter || 'all';
+                    return filter === 'all' || avis.category === filter;
                 }
             }
         }
