@@ -746,6 +746,7 @@
             minute: '2-digit'
         });
 
+        // Animation du bouton lors de la soumission
         document.getElementById('devis-form').addEventListener('submit', function(e) {
             const submitBtn = document.getElementById('submit-devis-btn');
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Envoi en cours...';
